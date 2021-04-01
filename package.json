@@ -1,0 +1,49 @@
+{
+  "name": "proyecto-la-esquina",
+  "version": "0.1.0",
+  "description": "Proyecto de plataforma de tienda online con MERN stack",
+  "main": "server.js",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "concurrently": "^6.0.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon server.js",
+    "node-server": "node server.js",
+    "client": "cd client && npm run start",
+
+    "server-install-dependencies": "npm install",
+    "client-install-dependencies": "cd client && npm install",
+    "install-all-dependencies": "concurrently \"npm run server-install-dependencies\" \"npm run client-install-dependencies\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AugustoNicola/Proyecto-LaEsquina.git"
+  },
+  "keywords": [
+    "mern",
+    "webdev",
+    "react",
+    "express",
+    "mongodb",
+    "nodejs",
+    "node-js"
+  ],
+  "author": "Augusto Nicola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AugustoNicola/Proyecto-LaEsquina/issues",
+    "email": "augusp64@gmail.com"
+  },
+  "homepage": "https://github.com/AugustoNicola/Proyecto-LaEsquina#readme"
+}
