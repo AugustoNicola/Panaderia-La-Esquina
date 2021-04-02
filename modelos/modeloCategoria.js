@@ -8,7 +8,7 @@ const esquemaCategoria = new mongoose.Schema({
 		unique: true
 	},
 	imagen_portada: {
-		type: Object,
+		type: String,
 		required: false
 	}
 }, {

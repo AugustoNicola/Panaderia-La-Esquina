@@ -30,6 +30,16 @@ const controladorCategoria = {
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
+	},
+	eliminarCategoria: async (req,res) => {
+		try {
+			//* eliminacion categoria SI EXISTE
+			const categoriaEliminada = await Categoria.findByIdAndDelete(req.params.id);
+			if(!categoriaEliminada) res.status(404).json({mensaje: "¡La categoria no existe!"}); //404: Not Found
+			res.status(200).json({mensaje: "Categoria eliminada"});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
 	}
 }
 
