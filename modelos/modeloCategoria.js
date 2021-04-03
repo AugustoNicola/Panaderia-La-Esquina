@@ -7,9 +7,9 @@ const esquemaCategoria = new mongoose.Schema({
 		trim: true,
 		unique: true
 	},
-	imagen_portada: {
+	imagenPortada: {
 		type: String,
-		required: false
+		required: true
 	}
 }, {
 	timestamps: true

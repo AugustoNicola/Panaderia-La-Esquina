@@ -3,6 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
+const path = require("path");
 
 // ==================== middleware ====================
 const app = express();
@@ -19,7 +20,7 @@ mongoose.connect(URI, {
 	useUnifiedTopology: true
 }, err => {
 	if(err) throw err;
-	console.log("Conectado a la BBDD de MongoDB!")
+	console.log("Conectado a la BBDD de MongoDB!");
 });
 
 // ==================== rutas ====================
@@ -27,10 +28,10 @@ app.use("/api", require("./rutas/rutaCategoria"));
 
 // ==================== inicializacion de servidor ====================
 app.get("/", (req, res) => {
-	res.json({msg: "Funcionando!"})
+	res.json({msg: "Funcionando!"});
 });
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
-	console.log("Servidor iniciado en el puerto ", PORT)
+	console.log("Servidor iniciado en el puerto ", PORT);
 });

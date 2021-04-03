@@ -1,6 +1,8 @@
 /node_modules
 /client/node_modules
 
+/imagenes
+
 # dependencies
 /client/.pnp
 /client/.pnp.js

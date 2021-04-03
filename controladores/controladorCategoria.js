@@ -17,13 +17,17 @@ const controladorCategoria = {
 	crearCategoria: async(req, res) => {
 		try {
 			const nombreCategoria = req.body.nombre;
+			const imagenCategoria = req.file;
 			
 			//? verificacion categoria unica
 			const categoriaCoincidente = await Categoria.findOne({nombre: nombreCategoria});
 			if(categoriaCoincidente) res.status(409).json({mensajeError: "¡La categoría ya existe!"}); //409: Conflict
 
+			//# la verificacion de imagen se hace en el frontend antes de enviar el request
+			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
+
 			//* creacion nueva categoria
-			const nuevaCategoria = new Categoria({nombre: nombreCategoria});
+			const nuevaCategoria = new Categoria({nombre: nombreCategoria, imagenPortada: imagenCategoria.filename});
 			await nuevaCategoria.save();
 
 			res.status(200).json({mensaje: "Categoria creada"});
