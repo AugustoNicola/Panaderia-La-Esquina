@@ -26,7 +26,6 @@ const esquemaProducto = new mongoose.Schema({
 	},
 	categorias: {
 		type: Array,
-		required: true,
 		default: []
 	},
 	imagenProducto: {

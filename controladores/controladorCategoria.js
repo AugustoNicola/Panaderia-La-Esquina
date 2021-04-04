@@ -18,18 +18,18 @@ const controladorCategoria = {
 	},
 	crearCategoria: async(req, res) => {
 		try {
-			const nombreCategoria = req.body.nombre;
-			const imagenCategoria = req.file;
+			const nombre = req.body.nombre;
+			const imagenPortada = req.file.filename;
 			
 			//? verificacion categoria unica
-			const categoriaCoincidente = await Categoria.findOne({nombre: nombreCategoria});
+			const categoriaCoincidente = await Categoria.findOne({nombre});
 			if(categoriaCoincidente) return res.status(409).json({mensajeError: "¡La categoría ya existe!"}); //409: Conflict
 
 			//# la verificacion de imagen se hace en el frontend antes de enviar el request
 			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
 
 			//* creacion nueva categoria
-			const nuevaCategoria = new Categoria({nombre: nombreCategoria, imagenPortada: imagenCategoria.filename});
+			const nuevaCategoria = new Categoria({nombre, imagenPortada});
 			await nuevaCategoria.save();
 
 			return res.status(200).json({categoria: nuevaCategoria});
@@ -39,11 +39,11 @@ const controladorCategoria = {
 	},
 	modificarCategoria: async(req, res) => {
 		try {
-			const nuevoNombreCategoria = req.body.nombre;
+			const nombre = req.body.nombre;
 			
 			//* modficacion categoria
 			//? y verificacion categoria existe
-			const categoriaModificada = await Categoria.findByIdAndUpdate(req.params.id, {nombre: nuevoNombreCategoria}, {new: true});
+			const categoriaModificada = await Categoria.findByIdAndUpdate(req.params.id, {nombre}, {new: true});
 			if(!categoriaModificada) return res.status(404).json({mensajeError: "¡La categoría no existe!"});
 
 			return res.status(200).json({categoria: categoriaModificada});
@@ -57,7 +57,7 @@ const controladorCategoria = {
 			const nuevaImagenCategoria = req.file;
 			
 			//? verificacion categoria existe
-			const categoriaAModificar = await Categoria.findById(id);
+			const categoriaAModificar = await Categoria.findById(req.params.id);
 			if(!categoriaAModificar) return res.status(404).json({mensajeError: "¡La categoría no existe!"});
 
 			//* eliminacion imagen previa

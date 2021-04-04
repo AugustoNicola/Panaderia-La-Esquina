@@ -29,7 +29,7 @@ app.use("/api", require("./rutas/rutaProducto"));
 
 // ==================== inicializacion de servidor ====================
 app.get("/", (req, res) => {
-	res.json({msg: "Funcionando!"});
+	res.sendFile(`${__dirname}/index.html`);
 });
 
 const PORT = process.env.PORT || 5000

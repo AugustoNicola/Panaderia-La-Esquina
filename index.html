@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Test</title>
+</head>
+<body>
+	<form action="http://localhost:5000/api/productos" method="post" enctype="multipart/form-data">
+		<input type="file" name="imagenProducto" id="imagenProducto">
+		<input type="text" placeholder="nombre" name="nombre" id="nombre">
+		<input type="number" placeholder="0" name="precio" id="precio">
+		<input type="text" placeholder="nombreunitario" name="nombreUnitario" 
+		id="nombreUnitario">
+		<input type="text" placeholder="descri" name="descripcion" 
+		id="descripcion">
+		<input type="submit" value="send">
+	</form>
+</body>
+</html>
