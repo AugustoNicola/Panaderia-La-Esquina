@@ -1,3 +1,5 @@
+const fs = require("fs");
+
 const Categoria = require("../modelos/modeloCategoria");
 
 const controladorCategoria = {
@@ -5,7 +7,7 @@ const controladorCategoria = {
 		try {
 			//* obtencion de categorias
 			const categorias = await Categoria.find();
-			res.status(200).json({
+			return res.status(200).json({
 				exito: true,
 				cantidad: categorias.length,
 				categorias: categorias
@@ -21,7 +23,7 @@ const controladorCategoria = {
 			
 			//? verificacion categoria unica
 			const categoriaCoincidente = await Categoria.findOne({nombre: nombreCategoria});
-			if(categoriaCoincidente) res.status(409).json({mensajeError: "¡La categoría ya existe!"}); //409: Conflict
+			if(categoriaCoincidente) return res.status(409).json({mensajeError: "¡La categoría ya existe!"}); //409: Conflict
 
 			//# la verificacion de imagen se hace en el frontend antes de enviar el request
 			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
@@ -30,17 +32,26 @@ const controladorCategoria = {
 			const nuevaCategoria = new Categoria({nombre: nombreCategoria, imagenPortada: imagenCategoria.filename});
 			await nuevaCategoria.save();
 
-			res.status(200).json({mensaje: "Categoria creada"});
+			return res.status(200).json({mensaje: "Categoria creada"});
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
 	},
 	eliminarCategoria: async (req,res) => {
 		try {
-			//* eliminacion categoria SI EXISTE
-			const categoriaEliminada = await Categoria.findByIdAndDelete(req.params.id);
-			if(!categoriaEliminada) res.status(404).json({mensaje: "¡La categoria no existe!"}); //404: Not Found
-			res.status(200).json({mensaje: "Categoria eliminada"});
+			//? verificacion categoria existe
+			const categoriaAEliminar = await Categoria.findById(req.params.id);
+			if(!categoriaAEliminar) return res.status(404).json({mensaje: "¡La categoria no existe!"}); //404: Not Found
+
+			//* eliminacion imagen asociada
+			fs.unlink(`./imagenes/categorias/${categoriaAEliminar.imagenPortada}`, err => {
+				return; //no importa si la imagen no existe
+			});
+
+			//* eliminacion documento de la categoria
+			await Categoria.findByIdAndDelete(req.params.id);
+
+			return res.status(200).json({mensaje: "Categoria eliminada"});
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
