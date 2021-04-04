@@ -32,7 +32,7 @@ const controladorCategoria = {
 			const nuevaCategoria = new Categoria({nombre: nombreCategoria, imagenPortada: imagenCategoria.filename});
 			await nuevaCategoria.save();
 
-			return res.status(200).json({mensaje: "Categoria creada"});
+			return res.status(200);
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
@@ -51,7 +51,7 @@ const controladorCategoria = {
 			//* eliminacion documento de la categoria
 			await Categoria.findByIdAndDelete(req.params.id);
 
-			return res.status(200).json({mensaje: "Categoria eliminada"});
+			return res.status(200);
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
