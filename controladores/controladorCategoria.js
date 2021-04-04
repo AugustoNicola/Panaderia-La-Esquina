@@ -32,7 +32,48 @@ const controladorCategoria = {
 			const nuevaCategoria = new Categoria({nombre: nombreCategoria, imagenPortada: imagenCategoria.filename});
 			await nuevaCategoria.save();
 
-			return res.status(200);
+			return res.status(200).json({categoria: nuevaCategoria});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
+	},
+	modificarCategoria: async(req, res) => {
+		try {
+			const nuevoNombreCategoria = req.body.nombre;
+			
+			//* modficacion categoria
+			//? y verificacion categoria existe
+			const categoriaModificada = await Categoria.findByIdAndUpdate(req.params.id, {nombre: nuevoNombreCategoria}, {new: true});
+			if(!categoriaModificada) return res.status(404).json({mensajeError: "¡La categoría no existe!"});
+
+			return res.status(200).json({categoria: categoriaModificada});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
+	},
+	modificarCategoriaConImagen: async(req, res) => {
+		try {
+			const nuevoNombreCategoria = req.body.nombre;
+			const nuevaImagenCategoria = req.file;
+			
+			//? verificacion categoria existe
+			const categoriaAModificar = await Categoria.findById(id);
+			if(!categoriaAModificar) return res.status(404).json({mensajeError: "¡La categoría no existe!"});
+
+			//* eliminacion imagen previa
+			fs.unlink(`./imagenes/categorias/${categoriaAModificar.imagenPortada}`, err => {
+				return; //no importa si la imagen no existe
+			});
+
+			//# la verificacion de imagen se hace en el frontend antes de enviar el request
+			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
+
+			//* modificacion categoria
+			categoriaAModificar.nombre = nuevoNombreCategoria;
+			categoriaAModificar.imagenPortada = nuevaImagenCategoria.filename;
+			await categoriaAModificar.save();
+
+			return res.status(200).json({categoria: categoriaAModificar});
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
@@ -51,7 +92,7 @@ const controladorCategoria = {
 			//* eliminacion documento de la categoria
 			await Categoria.findByIdAndDelete(req.params.id);
 
-			return res.status(200);
+			return res.status(200).json({categoria: categoriaAEliminar});
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}

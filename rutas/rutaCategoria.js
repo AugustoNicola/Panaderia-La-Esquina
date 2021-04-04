@@ -9,7 +9,10 @@ router.route("/categorias")
 	.post(upload.single("imagenCategoria"), controladorCategoria.crearCategoria)
 
 router.route("/categorias/:id")
-	//.put(controladorCategoria.modificarCategoria)
+	.put(upload.none(), controladorCategoria.modificarCategoria)
 	.delete(controladorCategoria.eliminarCategoria)
+
+router.route("/categorias/img/:id")
+	.put(upload.single("imagenCategoria"), controladorCategoria.modificarCategoriaConImagen)
 
 module.exports = router;
