@@ -9,7 +9,7 @@ router.route("/productos")
 	.post(upload.single("imagenProducto"), controladorProducto.crearProducto)
 
 router.route("/productos/:id")
-	//.put(upload.none(), controladorProducto.modificarProducto)
+	.put(upload.none(), controladorProducto.modificarProducto)
 	.delete(controladorProducto.eliminarProducto)
 
 router.route("/productos/img/:id")

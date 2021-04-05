@@ -37,6 +37,20 @@ const controladorProducto = {
 			return res.status(500).json({mensajeError: error.message});
 		}
 	},
+	modificarProducto: async(req, res) => {
+		try {
+			const {nombre, precio, nombreUnitario, descripcion, categorias} = req.body;
+			
+			//* modficacion producto
+			//? y verificacion producto existe
+			const productoModificado = await Producto.findByIdAndUpdate(req.params.id, {nombre, precio, nombreUnitario, descripcion, categorias}, {new: true});
+			if(!productoModificado) return res.status(404).end(); //404: Not Found.
+			
+			return res.status(200).json({producto: productoModificado});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
+	},
 	eliminarProducto: async(req, res) => {
 		try {
 			//* eliminacion documento de la categoria
