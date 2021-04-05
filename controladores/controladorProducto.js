@@ -18,16 +18,12 @@ const controladorProducto = {
 	},
 	crearProducto: async(req, res) => {
 		try {
-			const nombre = req.body.nombre;
-			const precio = req.body.precio;
-			const nombreUnitario = req.body.nombreUnitario;
-			const descripcion = req.body.descripcion;
-			const categorias = req.body.categorias;
+			const {nombre, precio, nombreUnitario, descripcion, categorias} = req.body;
 			const imagenProducto = req.file.filename;
 			
 			//? verificacion producto unico
 			const productoCoincidente = await Producto.findOne({nombre});
-			if(productoCoincidente) return res.status(409).json({mensajeError: "¡El producto ya existe!"}); //409: Conflict
+			if(productoCoincidente) return res.status(409).end(); //409: Conflict.
 
 			//# la verificacion de imagen se hace en el frontend antes de enviar el request
 			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
@@ -37,6 +33,23 @@ const controladorProducto = {
 			await nuevoProducto.save();
 
 			return res.status(200).json({producto: nuevoProducto});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
+	},
+	eliminarProducto: async(req, res) => {
+		try {
+			//* eliminacion documento de la categoria
+			//? y verificacion producto existe
+			const productoEliminado = await Producto.findByIdAndDelete(req.params.id);
+			if(!productoEliminado) return res.status(404).end(); //404: Not Found.
+
+			//* eliminacion imagen asociada
+			fs.unlink(`./imagenes/productos/${productoEliminado.imagenProducto}`, err => {
+				return; //no importa si la imagen no existe
+			});
+
+			return res.status(200).json({producto: productoEliminado});
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}

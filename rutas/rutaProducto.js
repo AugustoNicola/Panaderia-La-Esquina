@@ -10,7 +10,7 @@ router.route("/productos")
 
 router.route("/productos/:id")
 	//.put(upload.none(), controladorProducto.modificarProducto)
-	//.delete(controladorProducto.eliminarProducto)
+	.delete(controladorProducto.eliminarProducto)
 
 router.route("/productos/img/:id")
 	//.put(upload.single("imagenProducto"), controladorProducto.modificarProductoConImagen)
