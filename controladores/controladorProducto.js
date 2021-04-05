@@ -51,6 +51,37 @@ const controladorProducto = {
 			return res.status(500).json({mensajeError: error.message});
 		}
 	},
+	modificarProductoConImagen: async(req, res) => {
+		try {
+			const {nombre, precio, nombreUnitario, descripcion, categorias} = req.body;
+			const imagenProducto = req.file;
+			
+			//? verificacion producto existe
+			const productoAModificar = await Producto.findById(req.params.id);
+			if(!productoAModificar) return res.status(404).end(); //404: Not Found.
+
+			//* eliminacion imagen previa
+			fs.unlink(`./imagenes/productos/${productoAModificar.imagenProducto}`, err => {
+				return; //no importa si la imagen no existe
+			});
+
+			//# la verificacion de imagen se hace en el frontend antes de enviar el request
+			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
+
+			//* modificacion categoria
+			productoAModificar.nombre = nombre;
+			productoAModificar.precio = precio;
+			productoAModificar.nombreUnitario = nombreUnitario;
+			productoAModificar.descripcion = descripcion;
+			productoAModificar.categorias = categorias;
+			productoAModificar.imagenProducto = imagenProducto.filename;
+			await productoAModificar.save();
+
+			return res.status(200).json({categoria: productoAModificar});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
+	},
 	eliminarProducto: async(req, res) => {
 		try {
 			//* eliminacion documento de la categoria

@@ -13,6 +13,6 @@ router.route("/productos/:id")
 	.delete(controladorProducto.eliminarProducto)
 
 router.route("/productos/img/:id")
-	//.put(upload.single("imagenProducto"), controladorProducto.modificarProductoConImagen)
+	.put(upload.single("imagenProducto"), controladorProducto.modificarProductoConImagen)
 
 module.exports = router;
