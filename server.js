@@ -26,6 +26,7 @@ mongoose.connect(URI, {
 // ==================== rutas ====================
 app.use("/api", require("./rutas/rutaCategoria"));
 app.use("/api", require("./rutas/rutaProducto"));
+app.use("/api", require("./rutas/rutaUsuario"));
 
 // ==================== inicializacion de servidor ====================
 app.get("/", (req, res) => {
