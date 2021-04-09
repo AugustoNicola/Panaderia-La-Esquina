@@ -5,8 +5,31 @@ const Producto = require("../modelos/modeloProducto");
 const controladorProducto = {
 	obtenerProductos: async(req, res) => {
 		try {
+
+			const urlQuery = req.query;
+			
+			//* filtrado
+			let filtros = {};
+
+			if(urlQuery.categoria) {
+				filtros.categorias = {$all: [urlQuery.categoria]};
+			}
+			if(urlQuery.busqueda) {
+				filtros.nombre = {$regex: urlQuery.busqueda, $options: "i"};
+			}
+
+			//* ordenamiento
+			const orden = urlQuery.orden ? urlQuery.orden : "-precio";
+
+			//* paginacion
+			const pagina = urlQuery.pagina * 1 || 1;
+			const limite = urlQuery.limite * 1 || 9;
+			const saltear = (pagina - 1) * limite;
+
+			//* llamada al query
+			const productos = await Producto.find(filtros).sort(orden).skip(saltear).limit(limite);
+
 			//* obtencion de productos
-			const productos = await Producto.find();
 			return res.status(200).json({
 				exito: true,
 				cantidad: productos.length,
