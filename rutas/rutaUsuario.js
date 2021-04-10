@@ -1,13 +1,13 @@
 const router = require("express").Router();
 const controladorUsuario = require("../controladores/controladorUsuario");
 
-//router.post('/registro', controladorUsuario.registro);
-//router.post('/iniciarSesion', controladorUsuario.iniciarSesion);
-//router.get('/cerrarSesion', controladorUsuario.cerrarSesion);
+router.post('/usuarios/registro', controladorUsuario.registro);
+//router.post('/usuarios/iniciarSesion', controladorUsuario.iniciarSesion);
+//router.get('/usuarios/cerrarSesion', controladorUsuario.cerrarSesion);
 
-//router.get('/tokenReacceso', controladorUsuario.tokenReacceso);
+router.get('/usuarios/tokenReacceso', controladorUsuario.tokenReacceso);
 
-//router.get('/',  controladorUsuario.obtenerUsuario);
-//router.put('/modificarCarrito', controladorUsuario.modificarCarrito);
+//router.get('/usuarios',  controladorUsuario.obtenerUsuario);
+//router.put('/usuarios/modificarCarrito', controladorUsuario.modificarCarrito);
 
 module.exports = router;
