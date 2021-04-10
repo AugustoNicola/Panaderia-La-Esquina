@@ -91,7 +91,7 @@ const controladorProducto = {
 			//# la verificacion de imagen se hace en el frontend antes de enviar el request
 			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
 
-			//* modificacion categoria
+			//* modificacion producto
 			productoAModificar.nombre = nombre;
 			productoAModificar.precio = precio;
 			productoAModificar.nombreUnitario = nombreUnitario;
@@ -100,14 +100,14 @@ const controladorProducto = {
 			productoAModificar.imagenProducto = imagenProducto.filename;
 			await productoAModificar.save();
 
-			return res.status(200).json({categoria: productoAModificar});
+			return res.status(200).json({producto: productoAModificar});
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
 	},
 	eliminarProducto: async(req, res) => {
 		try {
-			//* eliminacion documento de la categoria
+			//* eliminacion producto
 			//? y verificacion producto existe
 			const productoEliminado = await Producto.findByIdAndDelete(req.params.id);
 			if(!productoEliminado) return res.status(404).end(); //404: Not Found.

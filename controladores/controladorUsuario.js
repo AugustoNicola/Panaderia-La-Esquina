@@ -31,7 +31,7 @@ const controladorUsuario = {
 			//* Activar cookie con el token de reacceso
 			res.cookie('tokenReacceso', tokenReacceso, {
 				httpOnly: true,
-				path: '/api/usuarios/tokenReacceso',
+				path: '/api/usuario/tokenReacceso',
 				maxAge: 7*24*60*60*1000 //# 7 dias
 			});
 
@@ -59,7 +59,7 @@ const controladorUsuario = {
 			//* Activar cookie con el token de reacceso
 			res.cookie('tokenReacceso', tokenReacceso, {
 				httpOnly: true,
-				path: '/api/usuarios/tokenReacceso',
+				path: '/api/usuario/tokenReacceso',
 				maxAge: 7*24*60*60*1000 //# 7 dias
 			});
 
@@ -72,7 +72,7 @@ const controladorUsuario = {
 	cerrarSesion: async(req, res) => {
 		try {
 			//* Elimina la cookie
-			res.clearCookie('tokenReacceso', {path: '/api/usuarios/tokenReacceso'});
+			res.clearCookie('tokenReacceso', {path: '/api/usuario/tokenReacceso'});
 			return res.status(200).end();
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
