@@ -79,7 +79,21 @@ const controladorUsuario = {
 		}
 	},
 	tokenReacceso: async(req, res) => {
-		return res.status(200).end();
+		try {
+			//? verificacion cookie activada
+			const cookieReacceso = req.cookies.tokenReacceso;
+			if(!cookieReacceso) return res.status(401).end(); //401: Unauthorized
+
+			//* creacion tokenAcceso
+			//? y verificacion token genuino
+			const tokenAcceso = jwt.verify(cookieReacceso, process.env.SECRETO_TOKEN_REACCESO, (error, usuario) =>{
+                if(error) return res.status(401).end(); //401: Unauthorized
+                return crearTokenAcceso({id: usuario.id});
+            });
+			return res.status(200).json({tokenAcceso});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
 	}
 }
 
