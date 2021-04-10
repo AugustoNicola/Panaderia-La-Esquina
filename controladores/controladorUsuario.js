@@ -94,6 +94,18 @@ const controladorUsuario = {
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
+	},
+	obtenerUsuario: async(req, res) => {
+		try {
+			//* obtencion datos del usuario
+			//? y verificacion usuario existe
+			const usuario = await Usuario.findById(req.user.id).select("-contrasena");
+			if(!usuario) return res.status(404).end(); //404: Not Found
+
+			return res.status(200).json({usuario});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
 	}
 }
 
