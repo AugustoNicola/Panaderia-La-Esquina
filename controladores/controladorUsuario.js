@@ -106,6 +106,21 @@ const controladorUsuario = {
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
+	},
+	modificarCarrito: async(req, res) => {
+		try {
+			//? verificacion usuario existe
+			const usuario = await Usuario.findById(req.user.id).select("-contrasena");
+			if(!usuario) return res.status(404).end(); //404: Not Found
+
+			const {carrito} = req.body;
+			usuario.carrito = carrito;
+			await usuario.save();
+
+			return res.status(200).json({carrito});
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
 	}
 }
 
