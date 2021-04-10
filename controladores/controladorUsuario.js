@@ -29,6 +29,7 @@ const controladorUsuario = {
 			const tokenAcceso = crearTokenAcceso({id: nuevoUsuario._id});
 			const tokenReacceso = crearTokenReacceso({id: nuevoUsuario._id});
 
+			//* Activar cookie con el token de reacceso
 			res.cookie('tokenReacceso', tokenReacceso, {
 				httpOnly: true,
 				path: '/api/usuarios/tokenReacceso',
@@ -39,6 +40,34 @@ const controladorUsuario = {
 
 		} catch (err) {
 			return res.status(500).json({mensajeError: err.message})
+		}
+	},
+	iniciarSesion: async(req, res) => {
+		try {
+			const {email, contrasena} = req.body;
+			//? verificacion usuario existe
+			const usuarioLogin = await Usuario.findOne({email});
+			if(!usuarioLogin) return res.status(404).end(); //404: Not Found
+
+			//? verificacion contrasena correcta
+			const contrasenaEsCorrecta = await bcrypt.compare(contrasena, usuarioLogin.contrasena);
+			if(!contrasenaEsCorrecta) return res.status(401).end(); //401: Unauthorized
+
+			//* Crear tokens de autenticacion
+			const tokenAcceso = crearTokenAcceso({id: usuarioLogin._id});
+			const tokenReacceso = crearTokenReacceso({id: usuarioLogin._id});
+
+			//* Activar cookie con el token de reacceso
+			res.cookie('tokenReacceso', tokenReacceso, {
+				httpOnly: true,
+				path: '/api/usuarios/tokenReacceso',
+				maxAge: 7*24*60*60*1000 //# 7 dias
+			});
+
+			return res.status(200).json({tokenAcceso});
+
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
 		}
 	},
 	tokenReacceso: async(req, res) => {
