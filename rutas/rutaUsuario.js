@@ -3,7 +3,7 @@ const controladorUsuario = require("../controladores/controladorUsuario");
 
 router.post('/usuarios/registro', controladorUsuario.registro);
 router.post('/usuarios/iniciarSesion', controladorUsuario.iniciarSesion);
-//router.get('/usuarios/cerrarSesion', controladorUsuario.cerrarSesion);
+router.post('/usuarios/cerrarSesion', controladorUsuario.cerrarSesion);
 
 router.get('/usuarios/tokenReacceso', controladorUsuario.tokenReacceso);
 

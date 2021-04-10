@@ -13,8 +13,7 @@ const controladorUsuario = {
 			if(usuarioExiste) return res.status(409).end(); //409: Conflict.
 
 			//? verificacion contrasena es adecuada
-			if(contrasena.length < 6) 
-				return res.status(422).end(); //422: Unprocessable Entity
+			if(contrasena.length < 6) return res.status(422).end(); //422: Unprocessable Entity
 
 			//* Encriptado de contrasena
 			const hashContrasena = await bcrypt.hash(contrasena, 10);
@@ -66,6 +65,15 @@ const controladorUsuario = {
 
 			return res.status(200).json({tokenAcceso});
 
+		} catch (error) {
+			return res.status(500).json({mensajeError: error.message});
+		}
+	},
+	cerrarSesion: async(req, res) => {
+		try {
+			//* Elimina la cookie
+			res.clearCookie('tokenReacceso', {path: '/api/usuarios/tokenReacceso'});
+			return res.status(200).end();
 		} catch (error) {
 			return res.status(500).json({mensajeError: error.message});
 		}
