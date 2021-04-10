@@ -99,7 +99,7 @@ const controladorUsuario = {
 		try {
 			//* obtencion datos del usuario
 			//? y verificacion usuario existe
-			const usuario = await Usuario.findById(req.user.id).select("-contrasena");
+			const usuario = await Usuario.findById(req.usuario.id).select("-contrasena");
 			if(!usuario) return res.status(404).end(); //404: Not Found
 
 			return res.status(200).json({usuario});
@@ -110,7 +110,7 @@ const controladorUsuario = {
 	modificarCarrito: async(req, res) => {
 		try {
 			//? verificacion usuario existe
-			const usuario = await Usuario.findById(req.user.id).select("-contrasena");
+			const usuario = await Usuario.findById(req.usuario.id).select("-contrasena");
 			if(!usuario) return res.status(404).end(); //404: Not Found
 
 			const {carrito} = req.body;
