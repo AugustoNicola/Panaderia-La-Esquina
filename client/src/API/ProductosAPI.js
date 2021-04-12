@@ -11,9 +11,9 @@ const ProductosAPI = () => {
 	const [pagina, setPagina] = useState(1);
 	const [limite, setLimite] = useState(9);
 
-	const [callback, setCallback] = useState(false);
+	const [callback, setCallback] = useState(false); // al ser alterado vuelve a obtener los productos
 
-	useEffect(() =>{
+	useEffect(() => {
 		const obtenerProductos = async () => {
 			//* llamada al backend para recibir los productos segun query string
 			const respuesta = await axios.get(`http://localhost:5000/api/productos?categoria=${categoria}&busqueda=${busqueda}&orden=${orden}&pagina=${pagina}&limite=${limite}`);
@@ -23,7 +23,7 @@ const ProductosAPI = () => {
 				setProductos(respuesta.data.productos);
 				setCantidadProductos(respuesta.data.cantidad);
 			}
-		}
+		};
 		
 		obtenerProductos(); // llama a la funcion
 	},[categoria, orden, busqueda, pagina, limite, callback]);
