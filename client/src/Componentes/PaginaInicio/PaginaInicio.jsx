@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { EstadoGlobal } from '../../EstadoGlobal';
 
 const PaginaInicio = () => {
+	const estado = useContext(EstadoGlobal);
+	const [productos, setProductos] = estado.productosAPI.productos;
+	
 	return (
 		<div>
-			<h1>Hello world!</h1>
+			{productos.map(producto => <li>{producto.nombre}</li>)}
 		</div>
 	)
 };

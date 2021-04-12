@@ -29,9 +29,9 @@ app.use("/api/productos", require("./rutas/rutaProducto"));
 app.use("/api/usuario", require("./rutas/rutaUsuario"));
 
 // ==================== inicializacion de servidor ====================
-app.get("/", (req, res) => {
+/*app.get("/", (req, res) => {
 	res.sendFile(`${__dirname}/index.html`);
-});
+});*/
 
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
