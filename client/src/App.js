@@ -1,5 +1,7 @@
 import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
+import "./normalize.css";
+import "./App.css";
 import PaginaInicio from "./Componentes/PaginaInicio/PaginaInicio";
 import Header from "./Componentes/Headers/Header"
 import EnrutadorPaginaPrincipal from "./Componentes/PaginasPrincipales/EnrutadorPaginaPrincipal"

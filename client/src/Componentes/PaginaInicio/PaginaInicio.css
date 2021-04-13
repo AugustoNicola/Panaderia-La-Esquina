@@ -1,0 +1,32 @@
+.hero {
+	height: 100vh;
+	background-image: url("../../img/Index/hero.jpg");
+	background-size: cover;
+
+	color: var(--color-blanco);
+}
+
+.titulo-hero {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.titulo-hero h1 {
+	font-family: var(--fuente-cursiva);
+	font-size: 18rem;
+	text-align: center;
+}
+.titulo-hero h2 {
+	font-family: var(--fuente-principal);
+	font-size: 5.2rem;
+	text-align: center;
+	margin-top: 8rem;
+}
+
+.informacion-hero h3 {
+	font-family: var(--fuente-principal);
+	font-size: 3.6rem;
+	text-align: center;
+}
