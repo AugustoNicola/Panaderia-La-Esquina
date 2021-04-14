@@ -4,6 +4,8 @@ import { EstadoGlobal } from '../../EstadoGlobal';
 import "./PaginaInicio.css";
 import Footer from "../Utilidades/Footer/Footer";
 
+import flecha_abajo from "../../img/Iconos/flecha-abajo.svg";
+
 const PaginaInicio = () => {
 	const estado = useContext(EstadoGlobal);
 	const [categorias, setCategorias] = estado.categoriasAPI.categorias;
@@ -17,7 +19,7 @@ const PaginaInicio = () => {
 			</div>
 			<div className="informacion-hero">
 				<h3>Mirá lo que tenemos para vos ;)</h3>
-				<img src="./flecha-abajo.svg" alt="Flecha" />
+				<i class="fas fa-chevron-down"></i>
 			</div>
 		</header>
 

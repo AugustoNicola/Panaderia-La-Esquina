@@ -2,31 +2,54 @@
 	height: 100vh;
 	background-image: url("../../img/Index/hero.jpg");
 	background-size: cover;
-
 	color: var(--color-blanco);
-}
 
-.titulo-hero {
 	display: flex;
-	flex-direction: column;
+	flex-flow: column;
 	justify-content: space-between;
-	align-items: center;
 }
 
 .titulo-hero h1 {
 	font-family: var(--fuente-cursiva);
-	font-size: 18rem;
+	font-size: 7.4rem;
+	color: var(--color-primario);
 	text-align: center;
+
+	margin-top: 6rem;
 }
+@media screen and (min-width: 520px) {.titulo-hero h1 {font-size: 10.4rem;}}
+@media screen and (min-width: 768px) {.titulo-hero h1 {font-size: 16rem;}}
+@media screen and (min-width: 1600px) {.titulo-hero h1 {font-size: 20rem; margin-top: 16rem;}}
+
 .titulo-hero h2 {
 	font-family: var(--fuente-principal);
-	font-size: 5.2rem;
+	font-size: 2.12rem;
 	text-align: center;
-	margin-top: 8rem;
+	letter-spacing: 0.4rem;
+	text-align: center;
+
+	margin-top: 4rem;
 }
+@media screen and (min-width: 520px) {.titulo-hero h2 {font-size: 3.6rem;}}
+@media screen and (min-width: 768px) {.titulo-hero h2 {font-size: 4.2rem;}}
+@media screen and (min-width: 1600px) {.titulo-hero h2 {font-size: 5.6rem; margin-top: 8rem;}}
+
+.informacion-hero {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+}
+@media screen and (min-width: 520px) {.informacion-hero {margin-bottom: 3rem;}}
 
 .informacion-hero h3 {
-	font-family: var(--fuente-principal);
-	font-size: 3.6rem;
+	font-family: var(--fuente-cursiva);
+	font-size: 3.8rem;
 	text-align: center;
 }
+@media screen and (min-width: 520px) {.informacion-hero h3 {font-size: 5.8rem; margin: 1rem 0;}}
+@media screen and (min-width: 1600px) {.informacion-hero h3 {font-size: 6.2rem;}}
+
+.informacion-hero i {
+	font-size: 7rem;
+}
+@media screen and (min-width: 520px) {.informacion-hero i {font-size: 9rem;}}
