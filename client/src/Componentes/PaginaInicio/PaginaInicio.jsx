@@ -19,7 +19,7 @@ const PaginaInicio = () => {
 			</div>
 			<div className="informacion-hero">
 				<h3>Mirá lo que tenemos para vos ;)</h3>
-				<i class="fas fa-chevron-down"></i>
+				<svg src={flecha_abajo} alt="Deslizá hacia abajo" />
 			</div>
 		</header>
 

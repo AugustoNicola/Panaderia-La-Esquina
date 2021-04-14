@@ -1,3 +1,5 @@
+/** ################## HERO ################## */
+
 .hero {
 	height: 100vh;
 	background-image: url("../../img/Index/hero.jpg");
@@ -53,3 +55,58 @@
 	font-size: 7rem;
 }
 @media screen and (min-width: 520px) {.informacion-hero i {font-size: 9rem;}}
+
+/** ################## NUESTROS PRODUCTOS ################## */
+.nuestros-productos h2 {
+	font-family: var(--fuente-cursiva);
+	font-size: 3.8rem;
+	text-align: center;
+}
+@media screen and (min-width: 520px) {.nuestros-productos h2 {font-size: 5rem;}}
+@media screen and (min-width: 1600px) {.nuestros-productos h2 {font-size: 6rem;}}
+
+
+.categorias-productos {
+	display: flex;
+	flex-flow: column;
+	width: 100%;
+}
+
+.categoria {
+	background-color: var(--color-primario);
+	margin-bottom: 2rem;
+	padding: 3.5rem 0;
+}
+
+.categoria span {
+	display: block;
+	color: var(--color-blanco);
+	font-size: 4.2rem;
+	text-align: center;
+}
+@media screen and (min-width: 1300px) {.categoria span {font-size: 5.6rem;}}
+
+.categoria h4 {
+	font-family: var(--fuente-cursiva);
+	color: var(--color-blanco);
+	font-size: 6.2rem;
+	text-align: center;
+	margin: 3rem 0 0 0;
+}
+@media screen and (min-width: 1300px) {.categoria h4 {font-size: 7.2rem;}}
+
+@media screen and (min-width: 920px) {
+	.categorias-productos {
+		display: flex;
+		flex-flow: row wrap;
+		justify-content: center;
+		gap: 2rem;
+	}
+
+	.categoria {
+		padding: 7rem 2rem;
+
+		flex-basis: calc(27% - 2rem);
+		border-radius: 5%;
+	}
+}
