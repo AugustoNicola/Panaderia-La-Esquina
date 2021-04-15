@@ -4,8 +4,6 @@ import { EstadoGlobal } from '../../EstadoGlobal';
 import "./PaginaInicio.css";
 import Footer from "../Utilidades/Footer/Footer";
 
-import flecha_abajo from "../../img/Iconos/flecha-abajo.svg";
-
 const PaginaInicio = () => {
 	const estado = useContext(EstadoGlobal);
 	const [categorias, setCategorias] = estado.categoriasAPI.categorias;
@@ -19,7 +17,7 @@ const PaginaInicio = () => {
 			</div>
 			<div className="informacion-hero">
 				<h3>Mirá lo que tenemos para vos ;)</h3>
-				<svg src={flecha_abajo} alt="Deslizá hacia abajo" />
+				<i class="fas fa-chevron-down"></i>
 			</div>
 		</header>
 
@@ -42,19 +40,18 @@ const PaginaInicio = () => {
 		</div>
 
 		<div className="donde-encontrarnos">
-			<img src="" alt="Imagen Dónde Encontrarnos"/>
 			<div className="contenido-donde-encontrarnos">
 				<h2>¿Sabés dónde encontranos?</h2>
 				<div className="informacion">
-					<i>i</i>
+					<i class="fas fa-map-marker-alt"></i>
 					<p>Av. Cabildo 1234, Palermo, Buenos Aires</p>
 				</div>
 				<div className="informacion">
-					<i>i</i>
+					<i class="far fa-clock"></i>
 					<p>Lunes a Viernes 08:00 — 19:30</p>
 				</div>
 				<div className="mapa">
-					//todo plugin mapa
+					{ /* todo plugin mapa*/}
 				</div>
 			</div>
 		</div>
