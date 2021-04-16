@@ -18,7 +18,7 @@ const controladorCategoria = {
 	},
 	crearCategoria: async(req, res) => {
 		try {
-			const nombre = req.body.nombre;
+			const {nombre, esFemenino} = req.body;
 			const imagenPortada = req.file.filename;
 			
 			//? verificacion categoria unica
@@ -29,7 +29,7 @@ const controladorCategoria = {
 			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
 
 			//* creacion nueva categoria
-			const nuevaCategoria = new Categoria({nombre, imagenPortada});
+			const nuevaCategoria = new Categoria({nombre, esFemenino, imagenPortada});
 			await nuevaCategoria.save();
 			
 			return res.status(200).json({categoria: nuevaCategoria});
@@ -39,11 +39,11 @@ const controladorCategoria = {
 	},
 	modificarCategoria: async(req, res) => {
 		try {
-			const nombre = req.body.nombre;
+			const {nombre, esFemenino} = req.body;
 			
 			//* modficacion categoria
 			//? y verificacion categoria existe
-			const categoriaModificada = await Categoria.findByIdAndUpdate(req.params.id, {nombre}, {new: true});
+			const categoriaModificada = await Categoria.findByIdAndUpdate(req.params.id, {nombre, esFemenino}, {new: true});
 			if(!categoriaModificada) return res.status(404).end(); //404: Not Found.
 			
 			return res.status(200).json({categoria: categoriaModificada});
@@ -53,7 +53,7 @@ const controladorCategoria = {
 	},
 	modificarCategoriaConImagen: async(req, res) => {
 		try {
-			const nuevoNombreCategoria = req.body.nombre;
+			const {nombre, esFemenino} = req.body;
 			const nuevaImagenCategoria = req.file;
 			
 			//? verificacion categoria existe
@@ -69,7 +69,8 @@ const controladorCategoria = {
 			//# en caso de error, se alcanza el catch y se envia un error de servidor (500)
 
 			//* modificacion categoria
-			categoriaAModificar.nombre = nuevoNombreCategoria;
+			categoriaAModificar.nombre = nombre;
+			categoriaAModificar.esFemenino = esFemenino;
 			categoriaAModificar.imagenPortada = nuevaImagenCategoria.filename;
 			await categoriaAModificar.save();
 

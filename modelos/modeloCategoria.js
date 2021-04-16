@@ -7,6 +7,10 @@ const esquemaCategoria = new mongoose.Schema({
 		trim: true,
 		unique: true
 	},
+	esFemenino: {
+		type: Boolean,
+		required: true
+	},
 	imagenPortada: {
 		type: String,
 		required: true

@@ -13,9 +13,9 @@ const Footer = () => {
 				<a href="/contacto">Contacto</a>
 			</nav>
 			<div className="redes-sociales">
-				<i class="fab fa-facebook-f"></i>
-				<i class="fab fa-twitter"></i>
-				<i class="fab fa-instagram"></i>
+				<i className="fab fa-facebook-f"></i>
+				<i className="fab fa-twitter"></i>
+				<i className="fab fa-instagram"></i>
 			</div>
 		</div>
 		<div className="copyright">
