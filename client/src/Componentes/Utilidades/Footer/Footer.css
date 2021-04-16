@@ -27,11 +27,10 @@
 	margin-bottom: 3.6rem;
 }
 
-.footer nav.navegacion-footer a {
+.footer nav.navegacion-footer a, 
+.footer nav.navegacion-footer a:visited {
 	text-decoration: none;
 	font-size: 1.8rem;
-}
-.footer nav.navegacion-footer a:visited {
 	color: var(--color-blanco);
 }
 
@@ -72,17 +71,25 @@
 		flex-flow: row wrap;
 		justify-content: space-around;
 		align-items: baseline;
+
+		padding: 2.6rem 0;
 	}
-	.footer .logo-footer {width: auto; margin: 2rem 0;}
+	.footer .logo-footer {
+		width: auto;
+		margin: 0;
+		font-size: 3.6rem;
+	}
 	
 	.footer nav.navegacion-footer {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 		gap: 2.3rem;
-	
-		margin-bottom: 3.6rem;
+		
+		margin: 0;
 	}
+
+	.footer .redes-sociales {margin: 0;}
 }
 
 /** ################## COPYRIGHT ################## */

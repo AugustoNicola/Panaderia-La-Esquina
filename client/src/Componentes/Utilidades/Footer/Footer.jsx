@@ -8,9 +8,9 @@ const Footer = () => {
 		<div className="footer">
 			<h3 className="logo-footer">La Esquina</h3>
 			<nav className="navegacion-footer">
-				<a href="">Página Principal</a>
-				<a href="">Tienda Virtual</a>
-				<a href="">Contacto</a>
+				<a href="/">Página Principal</a>
+				<a href="/tienda">Tienda Virtual</a>
+				<a href="/contacto">Contacto</a>
 			</nav>
 			<div className="redes-sociales">
 				<i class="fab fa-facebook-f"></i>

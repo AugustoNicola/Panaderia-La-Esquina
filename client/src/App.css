@@ -35,3 +35,13 @@ body {
 		margin: 0 auto;
 	}
 }
+
+*[data-transicion] {
+	opacity: 0;
+	animation: transicion 0.5s ease-in-out;
+	animation-fill-mode: forwards;
+}
+@keyframes transicion {
+	from {opacity: 0;}
+	to {opacity: 1;}
+}
