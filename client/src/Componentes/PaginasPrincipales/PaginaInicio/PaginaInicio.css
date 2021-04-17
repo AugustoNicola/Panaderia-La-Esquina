@@ -2,7 +2,7 @@
 
 .hero {
 	height: 100vh;
-	background-image: url("../../img/Index/hero.jpg");
+	background-image: url("../../../img/Index/hero.jpg");
 	background-size: cover;
 	color: var(--color-blanco);
 
@@ -127,7 +127,7 @@
 /** ################## DONDE ENCONTRARNOS ################## */
 .donde-encontrarnos {
 	background-color: var(--color-oscuro);
-	background-image: linear-gradient(rgba(64,46,50,0.5) 0%, rgba(64,46,50,1) 25%), url("../../img/Index/bg_donde_estamos.jpg");
+	background-image: linear-gradient(rgba(64,46,50,0.5) 0%, rgba(64,46,50,1) 25%), url("../../../img/Index/bg_donde_estamos.jpg");
 	background-size: cover;
 
 	padding: 2.4rem 1rem;
@@ -175,7 +175,7 @@
 
 @media screen and (min-width: 1024px) {
 	.donde-encontrarnos {
-		background-image: linear-gradient(90deg, rgba(64,46,50,0.5) 30%, rgba(64,46,50,1) 47%), url("../../img/Index/bg_donde_estamos_grande.jpg");
+		background-image: linear-gradient(90deg, rgba(64,46,50,0.5) 30%, rgba(64,46,50,1) 47%), url("../../../img/Index/bg_donde_estamos_grande.jpg");
 		background-size: cover;
 		background-position: center center;
 		margin-bottom: 6rem;

@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import { EstadoGlobal } from '../../EstadoGlobal';
+import { EstadoGlobal } from "../../../EstadoGlobal";
 
 import "./PaginaInicio.css";
-import Footer from "../Utilidades/Footer/Footer";
 
 const PaginaInicio = () => {
 	const estado = useContext(EstadoGlobal);
@@ -57,8 +56,6 @@ const PaginaInicio = () => {
 				</div>
 			</div>
 		</div>
-
-		<Footer />
 		</>
 	);
 };

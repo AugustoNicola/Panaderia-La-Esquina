@@ -1,0 +1,63 @@
+.header {
+	background-color: var(--color-primario);
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: space-between;
+
+	padding-top: 2rem;
+}
+
+.logo-header {
+	font-family: var(--fuente-cursiva);
+	font-weight: bold;
+	color: var(--color-blanco);
+	text-decoration: none;
+	font-size: 3.4rem;
+	text-align: center;
+
+	margin-bottom: 1.8rem;
+}
+.logo-header:hover {color: var(--color-blanco-hover);}
+
+.botones-header {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+}
+
+.botones-header .accion {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	color: var(--color-blanco);
+	text-decoration: none;
+
+	margin-bottom: 2rem;
+}
+.botones-header .accion:hover {color: var(--color-blanco-hover);}
+
+.botones-header .accion i {
+	margin: 0 2rem 0 0;
+	font-size: 2.8rem;
+}
+
+.botones-header .accion p {
+	font-size: 2.1rem;
+	font-weight: bold;
+	margin: 0;
+}
+
+@media screen and (min-width: 768px){
+	.header {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+
+		padding: 1.6rem 2rem;
+	}
+	.botones-header {
+		gap: 4rem;
+	}
+	.logo-header, .botones-header .accion {margin: 0;}
+}

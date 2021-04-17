@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import "./Footer.css";
 
@@ -6,11 +7,11 @@ const Footer = () => {
 	return (
 		<>
 		<div className="footer">
-			<h3 className="logo-footer">La Esquina</h3>
+			<Link to="/" className="logo-footer">La Esquina</Link>
 			<nav className="navegacion-footer">
-				<a href="/">Página Principal</a>
-				<a href="/tienda">Tienda Virtual</a>
-				<a href="/contacto">Contacto</a>
+				<Link to="/">Página Principal</Link>
+				<Link to="/tienda">Tienda Virtual</Link>
+				<Link to="/contacto">Contacto</Link>
 			</nav>
 			<div className="redes-sociales">
 				<i className="fab fa-facebook-f"></i>
@@ -19,7 +20,7 @@ const Footer = () => {
 			</div>
 		</div>
 		<div className="copyright">
-			<p>Copyright &copy; 2021 Augusto Nicola</p>
+			<p>Copyright &copy; 2021 <a target="_blank" href="https://github.com/AugustoNicola">Augusto Nicola</a></p>
 		</div>
 		</>
 	)
