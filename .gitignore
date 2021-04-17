@@ -1,5 +1,7 @@
 /node_modules
 /client/node_modules
+package-lock.json
+/client/package-lock.json
 
 /imagenes
 
@@ -11,6 +13,7 @@
 /client/build
 
 # misc
+.npmrc
 .DS_Store
 .env
 .env.local
