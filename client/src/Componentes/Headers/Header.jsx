@@ -1,11 +1,9 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
-import { EstadoGlobal } from "../../EstadoGlobal";
 
 import "./Header.css";
 
 const Header = () => {
-	const estado = useContext(EstadoGlobal);
 
 	return (
 		<div className="header">

@@ -7,7 +7,7 @@ const Filtros = () => {
 	const [categorias] = estado.categoriasAPI.categorias;
 
 	return (
-		<div className="filtros">
+		<div className="filtros" data-transicion style={{animationDelay: "0.3s"}}>
 			<input type="text" name="busqueda" id="busqueda" placeholder="¡Escribí lo que querés!"/>
 			<div className="selector-filtros">
 				<select name="categoria" id="categoria">

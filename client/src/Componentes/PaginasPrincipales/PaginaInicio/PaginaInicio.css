@@ -145,7 +145,8 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 3rem;
+	width: 85%;
+	margin: 0 auto 3rem;
 }
 
 .contenido-donde-encontrarnos .informacion i {
