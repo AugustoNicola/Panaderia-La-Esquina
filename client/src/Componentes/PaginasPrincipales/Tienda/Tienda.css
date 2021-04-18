@@ -64,6 +64,7 @@
 	-moz-appearance: none;
 	-webkit-appearance: none;
 	appearance: none;
+	cursor: pointer;
 }
 .filtros .selector-filtros::after {
 	content:"\f078";
@@ -73,7 +74,6 @@
 	font-size: 3rem;
     top: 25%;
     right: 10px;
-	pointer-events: none;
 }
 
 @media screen and (min-width: 1020px) {
@@ -89,5 +89,81 @@
 		width: unset;
 		flex-grow: 1;
 		height: 6rem;
+	}
+}
+
+/** ################## PRODUCTOS ################## */
+.listado-productos {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+	padding: 0 1rem;
+}
+
+.producto {
+	flex-basis: calc(100%);
+	border-radius: 5%;
+	background-color: #EEE7E0;
+	text-decoration: none;
+
+	display: flex;
+	flex-flow: column nowrap;
+
+	margin-bottom: 2rem;
+}
+.producto:hover {
+	background-color: #dad3cc;
+}
+
+.producto img {
+	width: 100%;
+	margin-bottom: 1rem;
+	border-top-left-radius: 5%;
+	border-top-right-radius: 5%;
+}
+
+.producto .informacion-producto {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-content: center;
+	text-align: center;
+	height: 100%;
+}
+
+.producto .informacion-producto .nombre {
+	flex-grow: 1;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	color: var(--color-primario);
+	font-size: 3.6rem;
+	padding: 1rem;
+	margin: 0;
+}
+
+.producto .informacion-producto .precio {
+	color: #000000;
+	font-size: 2.8rem;
+	font-weight: bold;
+}
+
+@media screen and (min-width: 570px) {
+	.producto {
+		flex-basis: calc(50% - 0.5rem);
+	}
+}
+
+@media screen and (min-width: 900px) {
+	.producto {
+		flex-basis: calc(33.3% - 0.5rem);
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	.producto {
+		flex-basis: calc(25% - 0.5rem);
 	}
 }
