@@ -7,7 +7,7 @@ const ProductosAPI = () => {
 
 	const [categoria, setCategoria] = useState("")
 	const [busqueda, setBusqueda] = useState("");
-	const [orden, setOrden] = useState("");
+	const [orden, setOrden] = useState("-updatedAt");
 	const [pagina, setPagina] = useState(1);
 	const [limite, setLimite] = useState(9);
 
