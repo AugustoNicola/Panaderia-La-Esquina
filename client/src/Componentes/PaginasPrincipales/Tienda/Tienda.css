@@ -73,4 +73,21 @@
 	font-size: 3rem;
     top: 25%;
     right: 10px;
+	pointer-events: none;
+}
+
+@media screen and (min-width: 1020px) {
+	.filtros {
+		gap: 1rem;
+	}
+	.filtros #busqueda {
+		width: unset;
+		flex-grow: 3;
+		height: 6rem;
+	}
+	.filtros .selector-filtros {
+		width: unset;
+		flex-grow: 1;
+		height: 6rem;
+	}
 }

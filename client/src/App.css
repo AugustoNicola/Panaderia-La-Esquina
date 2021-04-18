@@ -30,11 +30,9 @@ body {
 }
 
 /** ################## UTILIDADES ################## */
-@media screen and (min-width: 1600px) {
-	.seccion {
-		max-width: 1200px;
-		margin: 0 auto;
-	}
+.seccion {
+	max-width: 1200px;
+	margin: 0 auto;
 }
 .seccion h1 {
 	color: var(--color-primario);
