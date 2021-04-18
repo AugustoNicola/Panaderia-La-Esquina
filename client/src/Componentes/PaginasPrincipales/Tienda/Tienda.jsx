@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import { EstadoGlobal } from "../../../EstadoGlobal";
 
+import "./Tienda.css"
+
 import Filtros from "./Filtros";
 import Producto from "./Producto";
 

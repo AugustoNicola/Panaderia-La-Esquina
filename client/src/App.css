@@ -36,6 +36,12 @@ body {
 		margin: 0 auto;
 	}
 }
+.seccion h1 {
+	color: var(--color-primario);
+	text-align: center;
+	font-size: 3.4rem;
+	margin: 2.4rem 0;
+}
 
 *[data-transicion] {
 	opacity: 0;

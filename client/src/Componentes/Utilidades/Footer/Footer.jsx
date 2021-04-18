@@ -20,7 +20,7 @@ const Footer = () => {
 			</div>
 		</div>
 		<div className="copyright">
-			<p>Copyright &copy; 2021 <a target="_blank" href="https://github.com/AugustoNicola">Augusto Nicola</a></p>
+			<p>Copyright &copy; 2021 <a target="_blank" rel="noreferrer" href="https://github.com/AugustoNicola">Augusto Nicola</a></p>
 		</div>
 		</>
 	)
