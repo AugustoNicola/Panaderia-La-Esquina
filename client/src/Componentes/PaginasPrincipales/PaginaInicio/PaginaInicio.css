@@ -78,6 +78,9 @@
 	padding: 3.5rem 0;
 
 	position: relative;
+	overflow: hidden;
+
+	cursor: pointer;
 }
 
 .categoria img {
@@ -89,6 +92,10 @@
 	border-radius: 5%;
 
 	filter: opacity(0.3);
+	transition: all 0.3s ease;
+}
+.categoria:hover img {
+	transform: scale(1.1);
 }
 
 .categoria span {

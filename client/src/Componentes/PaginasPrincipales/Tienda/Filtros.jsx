@@ -29,9 +29,9 @@ const Filtros = () => {
 				<select name="categoria" id="categoria" onChange={cambioCategoria}>
 					<option value="">Todo</option>
 					{
-						categorias.map(categoria => {
+						categorias.map(categoriaActual => {
 							return (
-								<option value={categoria.nombre}>{categoria.nombre}</option>
+								<option key={categoriaActual._id} value={categoriaActual.nombre} selected={categoria === categoriaActual.nombre}>{categoriaActual.nombre}</option>
 							)
 						})
 					}

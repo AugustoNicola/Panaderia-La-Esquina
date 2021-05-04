@@ -1,4 +1,5 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
+import { Redirect } from "react-router";
 import { EstadoGlobal } from "../../../EstadoGlobal";
 
 import "./PaginaInicio.css";
@@ -6,9 +7,18 @@ import "./PaginaInicio.css";
 const PaginaInicio = () => {
 	const estado = useContext(EstadoGlobal);
 	const [categorias] = estado.categoriasAPI.categorias;
+	const [categoria, setCategoria] = estado.productosAPI.categoria;
+	const [redireccion, setRedireccion] = useState(false);
+
+	const navegacionTienda = (nombreCategoria) => {
+		setCategoria(nombreCategoria);
+		setRedireccion(true);
+	};
 
 	return (
 		<>
+		{redireccion && <Redirect to="/tienda" />}
+
 		<header className="hero">
 			<div className="titulo-hero">
 				<h1 data-transicion style={{animationDelay: "0s"}}>La Esquina</h1>
@@ -26,17 +36,14 @@ const PaginaInicio = () => {
 				{
 					categorias.map(categoria => {
 						return (
-							<div className="categoria" key={categoria._id}>
+							<div className="categoria" key={categoria._id} onClick={() => navegacionTienda(categoria.nombre)}>
 								<span>{categoria.esFemenino ? "Nuestras" : "Nuestros"}</span>
 								<h4>{categoria.nombre}</h4>
 								<img src= {"http://localhost:5000/imagenes/categorias/" + categoria.imagenPortada} alt=""/>
 							</div>
 						);
 					})
-
 				}
-				
-				
 			</div>
 		</div>
 
