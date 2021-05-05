@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 import { EstadoGlobal } from "../../../EstadoGlobal";
+import ProductoRelacionado from "../Tienda/Producto";
+
+import "./Producto.css"
+
 
 const Producto = () => {
 	const estado = useContext(EstadoGlobal);
@@ -24,18 +28,17 @@ const Producto = () => {
 
 	}, [idProducto, productos, productoSeleccionado]);
 	
-
-	return (
-		<main className="producto-seleccionado">
+	if (productoSeleccionado) return (
+		<main className="producto-seleccionado seccion">
 			<div className="imagen-producto">
-				{ productoSeleccionado && <img src={`http://localhost:5000/imagenes/productos/${productoSeleccionado.imagenProducto}`} alt={productoSeleccionado.nombre} /> }
+				<img src={`http://localhost:5000/imagenes/productos/${productoSeleccionado.imagenProducto}`} alt={productoSeleccionado.nombre} />
 			</div>
 
 			<div className="informacion-producto">
 				<h1 className="nombre">{productoSeleccionado.nombre}</h1>
 				<h2 className="precio">{`$${productoSeleccionado.precio}/${productoSeleccionado.nombreUnitario}`}</h2>
 				<p className="descripcion">{productoSeleccionado.descripcion}</p>
-				<p className="categorias">{productoSeleccionado.categorias}</p>
+				<p className="categorias">Categorías: {productoSeleccionado.categorias.map((categoria, i) => i + 1 !== productoSeleccionado.categorias.length ? `${categoria}, ` : categoria)}</p>
 			</div>
 			<div className="acciones">
 				<input type="number" className="cantidad"/>
@@ -44,20 +47,19 @@ const Producto = () => {
 
 			<div className="productos-relacionados">
 				<h2>Productos Relacionados</h2>
-			{
+				{
 				productosRelacionados.map(productoRelacionado => {
 					if (productoRelacionado._id !== idProducto) {
 						return (
-							<div className="producto" key={productoRelacionado._id}>
-								{productoRelacionado.nombre}
-							</div>
+							<ProductoRelacionado producto={productoRelacionado} key={productoRelacionado._id} />
 						);
 					}
 				})
-			}
+				}
 			</div>
 		</main>
 	)
+	return <div ></div>
 };
 
 export default Producto;
