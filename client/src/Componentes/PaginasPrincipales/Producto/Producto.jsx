@@ -34,6 +34,7 @@ const Producto = () => {
 	}, [idProducto, productos, productoSeleccionado]);
 	
 	if (productoSeleccionado) return (
+		<>
 		<main className="producto-seleccionado seccion">
 			<div className="imagen-producto">
 				<img src={`http://localhost:5000/imagenes/productos/${productoSeleccionado.imagenProducto}`} alt={productoSeleccionado.nombre} />
@@ -49,9 +50,11 @@ const Producto = () => {
 				<input type="number" value={cantidadCarrito} min="1" max="99" onChange={cambioCantidadCarrito} className="cantidad"/>
 				<button type="submit" class="boton">Agregar al carrito</button>
 			</div>
+		</main>
 
-			<div className="productos-relacionados">
-				<h2>Productos Relacionados</h2>
+		<div className="productos-relacionados seccion">
+			<h2>Productos Relacionados</h2>
+			<div className="listado">
 				{
 				productosRelacionados.map(productoRelacionado => {
 					if (productoRelacionado._id !== idProducto) {
@@ -62,7 +65,8 @@ const Producto = () => {
 				})
 				}
 			</div>
-		</main>
+		</div>
+		</>
 	)
 	return <div ></div>
 };

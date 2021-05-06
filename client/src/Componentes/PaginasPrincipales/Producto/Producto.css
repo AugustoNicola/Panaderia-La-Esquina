@@ -78,3 +78,29 @@
 .acciones .boton {
 	font-size: 4rem;
 }
+
+/** ################## RELACIONADOS ################## */
+.productos-relacionados {
+	padding: 0 1rem;
+	margin-top: 8rem;
+}
+
+.productos-relacionados h2 {
+	color: var(--color-primario);
+	text-align: center;
+	font-size: 3.6rem;
+	margin: 2.4rem 0;
+}
+
+.productos-relacionados .listado {
+	display: flex;
+	gap: 3rem;
+	flex-flow: row nowrap;
+	overflow-x: scroll;
+	scrollbar-width: none;
+}
+
+.productos-relacionados .listado .producto {
+	flex: 100% 1 0;
+	min-width: 240px;
+}
