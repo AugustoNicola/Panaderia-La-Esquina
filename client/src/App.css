@@ -50,3 +50,18 @@ body {
 	from {opacity: 0;}
 	to {opacity: 1;}
 }
+
+.boton {
+	color: var(--color-blanco);
+	background-color: var(--color-primario);
+	font-family: var(--fuente-principal);
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	border: none;
+	border-radius: 15px;
+	padding: 1rem;
+}
+.boton:focus, .boton:hover {
+	background-color: var(--color-primario-realce);
+}

@@ -1,3 +1,4 @@
+/** ################## PRODUCTO SELECCIONADO ################## */
 .producto-seleccionado {
 	display: flex;
 	flex-direction: column;
@@ -35,12 +36,45 @@
 }
 
 .producto-seleccionado .informacion-producto .categorias {
-	color: #666666;
+	color: #777777;
 	font-size: 2.1rem;
 	font-weight: bold;
 }
 
 .producto-seleccionado .acciones {
-	width: 40%;
+	width: 95%;
+	padding-top: 2rem;
 	border-top: 2px solid #666666;
+
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	gap: 2.5rem;
+}
+
+/** ################## ACCIONES ################## */
+
+.acciones .cantidad {
+	width: 10rem;
+	padding: 1rem;
+
+	border-radius: 0%;
+	border: 2px solid #C6C6C6;
+
+	color: #575757;
+	font-size: 2.8rem;
+	font-weight: bold;
+
+	-moz-appearance: textfield;
+	text-align: center;
+}
+.acciones .cantidad:hover {border-color: #afafaf;}
+.acciones .cantidad:focus {
+	border-color: #888888;
+	outline: none;
+	background-color: #f0f0f0;
+}
+
+.acciones .boton {
+	font-size: 4rem;
 }
