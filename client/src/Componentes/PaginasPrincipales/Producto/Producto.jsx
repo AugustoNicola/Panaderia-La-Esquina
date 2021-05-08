@@ -36,17 +36,17 @@ const Producto = () => {
 	if (productoSeleccionado) return (
 		<>
 		<main className="producto-seleccionado seccion">
-			<div className="imagen-producto">
+			<div className="imagen-producto" data-transicion style={{animationDelay: "0.2s"}}>
 				<img src={`http://localhost:5000/imagenes/productos/${productoSeleccionado.imagenProducto}`} alt={productoSeleccionado.nombre} />
 			</div>
 
-			<div className="informacion-producto">
+			<div className="informacion-producto" data-transicion style={{animationDelay: "0.4s"}}>
 				<h1 className="nombre">{productoSeleccionado.nombre}</h1>
 				<h2 className="precio">{`$${productoSeleccionado.precio}/${productoSeleccionado.nombreUnitario}`}</h2>
 				<p className="descripcion">{productoSeleccionado.descripcion}</p>
 				<p className="categorias">{productoSeleccionado.categorias.length > 1 ? "Categorías: " : "Categoría: "} {productoSeleccionado.categorias.map((categoria, i) => i + 1 !== productoSeleccionado.categorias.length ? `${categoria}, ` : categoria)}</p>
 				
-				<div className="acciones">
+				<div className="acciones" data-transicion style={{animationDelay: "0.6s"}}>
 					<input type="number" value={cantidadCarrito} min="1" max="99" onChange={cambioCantidadCarrito} className="cantidad"/>
 					<button type="submit" class="boton">Agregar al carrito</button>
 				</div>
@@ -54,7 +54,7 @@ const Producto = () => {
 			
 		</main>
 
-		<div className="productos-relacionados seccion">
+		<div className="productos-relacionados seccion" data-transicion style={{animationDelay: "0.8s"}}>
 			<h2>Productos Relacionados</h2>
 			<div className="listado">
 				{
