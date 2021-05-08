@@ -17,12 +17,12 @@ const Producto = () => {
 
 	const [cantidadCarrito, setCantidadCarrito] = useState(1);
 	const cambioCantidadCarrito = e => {
-		setCantidadCarrito((e.target.value >= 1 && e.target.value <= 99 ? e.target.value : 1));
+		setCantidadCarrito((e.target.value >= 1 && e.target.value <= 99 ? e.target.value : cantidadCarrito));
 	}
 
 	useEffect(async () => {
 		//* encuentra el producto seleccionado
-		productos.map(producto => {
+		productos.forEach(producto => {
 			if(producto._id === idProducto) setProductoSeleccionado(producto);
 		});
 		
@@ -44,12 +44,14 @@ const Producto = () => {
 				<h1 className="nombre">{productoSeleccionado.nombre}</h1>
 				<h2 className="precio">{`$${productoSeleccionado.precio}/${productoSeleccionado.nombreUnitario}`}</h2>
 				<p className="descripcion">{productoSeleccionado.descripcion}</p>
-				<p className="categorias">Categorías: {productoSeleccionado.categorias.map((categoria, i) => i + 1 !== productoSeleccionado.categorias.length ? `${categoria}, ` : categoria)}</p>
+				<p className="categorias">{productoSeleccionado.categorias.length > 1 ? "Categorías: " : "Categoría: "} {productoSeleccionado.categorias.map((categoria, i) => i + 1 !== productoSeleccionado.categorias.length ? `${categoria}, ` : categoria)}</p>
+				
+				<div className="acciones">
+					<input type="number" value={cantidadCarrito} min="1" max="99" onChange={cambioCantidadCarrito} className="cantidad"/>
+					<button type="submit" class="boton">Agregar al carrito</button>
+				</div>
 			</div>
-			<div className="acciones">
-				<input type="number" value={cantidadCarrito} min="1" max="99" onChange={cambioCantidadCarrito} className="cantidad"/>
-				<button type="submit" class="boton">Agregar al carrito</button>
-			</div>
+			
 		</main>
 
 		<div className="productos-relacionados seccion">
