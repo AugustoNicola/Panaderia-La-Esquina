@@ -16,7 +16,7 @@ const ProductosAPI = () => {
 	useEffect(() => {
 		const obtenerProductos = async () => {
 			//* llamada al backend para recibir los productos segun query string
-			const respuesta = await axios.get(`http://localhost:5000/api/productos?categoria=${categoria}&busqueda=${busqueda}&orden=${orden}&pagina=${pagina}&limite=${limite}`);
+			const respuesta = await axios.get(`/api/productos?categoria=${categoria}&busqueda=${busqueda}&orden=${orden}&pagina=${pagina}&limite=${limite}`);
 
 			if(respuesta.status === 200)
 			{

@@ -8,7 +8,7 @@ router.post('/cerrarSesion', controladorUsuario.cerrarSesion);
 
 router.get('/tokenReacceso', controladorUsuario.tokenReacceso);
 
-router.get('/', autorizacionUsuario, controladorUsuario.obtenerUsuario);
+router.get('/informacion', autorizacionUsuario, controladorUsuario.obtenerUsuario);
 router.put('/modificarCarrito', autorizacionUsuario, controladorUsuario.modificarCarrito);
 
 module.exports = router;

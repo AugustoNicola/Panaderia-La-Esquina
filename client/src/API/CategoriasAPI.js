@@ -10,7 +10,7 @@ const CategoriasAPI = () => {
 	useEffect(() => {
 		const obtenerCategorias = async () => {
 			//* llamada al backend para recibir las categorias
-			const respuesta = await axios.get(`http://localhost:5000/api/categorias`);
+			const respuesta = await axios.get(`/api/categorias`);
 
 			if(respuesta.status === 200)
 			{

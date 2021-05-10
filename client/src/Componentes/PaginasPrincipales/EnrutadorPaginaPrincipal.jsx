@@ -1,6 +1,8 @@
 import React from 'react';
 import {Switch, Route} from "react-router-dom";
 
+import IniciarSesion from "./IniciarSesion/IniciarSesion";
+
 import Tienda from "./Tienda/Tienda";
 import Producto from "./Producto/Producto";
 import Carrito from "./Carrito/Carrito";
@@ -8,6 +10,8 @@ import Carrito from "./Carrito/Carrito";
 const EnrutadorPaginaPrincipal = () => {
 	return (
 		<Switch>
+			<Route exact path="/iniciarSesion" component={IniciarSesion} />
+			
 			<Route exact path="/tienda" component={Tienda} />
 
 			<Route exact path="/producto/:idProducto" component={Producto} />
