@@ -1,5 +1,4 @@
 import React, {useContext} from 'react';
-import axios from 'axios';
 
 import { EstadoGlobal } from "../../../EstadoGlobal";
 import "./IniciarSesion.css";
@@ -10,8 +9,7 @@ const IniciarSesion = () => {
 	const iniciarSesion = estado.usuarioAPI.iniciarSesion;
 	
 	return (
-		//usar credenciales de verdad
-		<button onClick={() => {iniciarSesion("xxx@xxx.com", "xxxxxx")}}></button>
+		<button onClick={() => {iniciarSesion("admin@admin.com", "123456")}}></button>
 	)
 };
 

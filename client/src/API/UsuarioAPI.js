@@ -7,6 +7,14 @@ const UsuarioAPI = () => {
 	const [esAdmin, setEsAdmin] = useState(false);
 	const [carrito, setCarrito] = useState([]);
 	
+	const eliminarDatosDeSesion = () => {
+		localStorage.removeItem("haySesion");
+		setToken(false);
+		setSesionIniciada(false);
+		setEsAdmin(false);
+		setCarrito([]);
+	};
+	
 	// intenta iniciar sesion llamando al API, y provoca que se obtenga el token de refresco si se logra
 	const iniciarSesion = async (email, contrasena) => {
 		try {
@@ -18,23 +26,10 @@ const UsuarioAPI = () => {
 			//* 200: Exito
 			if(respuesta.status === 200)
 			{
-				localStorage.setItem('haySesion', true);
+				localStorage.setItem("haySesion", true);
 				window.location.href = "/";
-			}
-			//? 401: Unauthorized
-			else if(respuesta.status === 401)
-			{
-				//todo
-			}
-			//? 404: Not Found
-			else if(respuesta.status === 401)
-			{
-				//todo
-			}
-			//? 500: Server Error
-			else if(respuesta.status === 500)
-			{
-				//todo
+			} else {
+				return respuesta.status; //devuelve el status code para mostrarle al usuario la informacion relevante
 			}
 		} catch (error) {
 			console.log(error);
@@ -51,19 +46,16 @@ const UsuarioAPI = () => {
 				{
 					setToken(respuesta.data.tokenAcceso);
 					setTimeout(() => {obtenerTokenReacceso();}, 10 * 60 * 1000); // vuelve a llamar al acabarse el tiempo
-				}
-				//? 401: Unauthorized
-				else if(respuesta.status === 401)
-				{
-					//todo
-				}
-				//? 500: Server Error
-				else if(respuesta.status === 500)
-				{
-					//todo
+				} else {
+					//! Error: elimina la sesion actual
+					eliminarDatosDeSesion();
+					alert("Sesion cerrada: Error " + respuesta.status);
 				}
 			} catch (error) {
 				console.log(error);
+				//! Error: elimina la sesion actual
+				eliminarDatosDeSesion();
+				alert("Sesion cerrada: Error del trycatch");
 			}
 		};
 		
@@ -83,25 +75,17 @@ const UsuarioAPI = () => {
 					setSesionIniciada(true);
 					setEsAdmin(respuesta.data.usuario.esAdmin);
 					setCarrito(respuesta.data.usuario.carrito);
-				}
-				//? 401: Unauthorized
-				else if(respuesta.status === 401)
-				{
-					//todo
-				}
-				//? 404: Not Found
-				else if(respuesta.status === 401)
-				{
-					//todo
-				}
-				//? 500: Server Error
-				else if(respuesta.status === 500)
-				{
-					//todo
+				} else {
+					//! Error: elimina la sesion actual
+					eliminarDatosDeSesion();
+					alert("Sesion cerrada: Error " + respuesta.status);
 				}
 				
 			} catch (error) {
 				console.log(error);
+				//! Error: elimina la sesion actual
+				eliminarDatosDeSesion();
+				alert("Sesion cerrada: Error del trycatch");
 			}
 		};
 		
