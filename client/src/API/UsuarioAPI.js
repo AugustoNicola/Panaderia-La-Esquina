@@ -23,39 +23,61 @@ const UsuarioAPI = () => {
 				contrasena: contrasena
 			});
 			
-			//* 200: Exito
 			if(respuesta.status === 200)
 			{
+				//* 200: Exito	
 				localStorage.setItem("haySesion", true);
-				window.location.href = "/";
+				window.location.href = "/tienda";
 			} else {
 				return respuesta.status; //devuelve el status code para mostrarle al usuario la informacion relevante
 			}
 		} catch (error) {
+			//! Error
 			console.log(error);
+			alert("No se pudo iniciar sesion: Error en el trycatch");
 		}
-	}
+	};
+	
+	const cerrarSesion = async () => {
+		try {
+			const respuesta = await axios.post("/api/usuario/cerrarSesion"); //borra la cookie
+			if(respuesta.status === 200)
+			{
+				//* 200: Exito
+				eliminarDatosDeSesion();
+				window.location.href = "/tienda";
+			} else {
+				//! Error
+				alert("No se pudo cerrar sesion: Error " + respuesta.status);
+			}
+		} catch (error) {
+			//! Error
+			console.log(error);
+			alert("No se pudo cerrar sesion: Error en el trycatch");
+		}
+	};
 	
 	// actualiza el token usando como autorizacion la cookie
 	useEffect(() => {
 		const obtenerTokenReacceso = async () => {
 			try {
 				const respuesta = await axios.get("/api/usuario/tokenReacceso");
-				//* 200: Exito
 				if(respuesta.status === 200)
 				{
+					//* 200: Exito
 					setToken(respuesta.data.tokenAcceso);
 					setTimeout(() => {obtenerTokenReacceso();}, 10 * 60 * 1000); // vuelve a llamar al acabarse el tiempo
 				} else {
 					//! Error: elimina la sesion actual
-					eliminarDatosDeSesion();
 					alert("Sesion cerrada: Error " + respuesta.status);
+					eliminarDatosDeSesion();
 				}
 			} catch (error) {
 				console.log(error);
 				//! Error: elimina la sesion actual
-				eliminarDatosDeSesion();
+				console.log(error);
 				alert("Sesion cerrada: Error del trycatch");
+				eliminarDatosDeSesion();
 			}
 		};
 		
@@ -77,15 +99,15 @@ const UsuarioAPI = () => {
 					setCarrito(respuesta.data.usuario.carrito);
 				} else {
 					//! Error: elimina la sesion actual
-					eliminarDatosDeSesion();
 					alert("Sesion cerrada: Error " + respuesta.status);
+					eliminarDatosDeSesion();
 				}
 				
 			} catch (error) {
-				console.log(error);
 				//! Error: elimina la sesion actual
-				eliminarDatosDeSesion();
+				console.log(error);
 				alert("Sesion cerrada: Error del trycatch");
+				eliminarDatosDeSesion();
 			}
 		};
 		
@@ -98,7 +120,8 @@ const UsuarioAPI = () => {
 		esAdmin: [esAdmin, setEsAdmin],
 		carrito: [carrito, setCarrito],
 		
-		iniciarSesion: iniciarSesion
+		iniciarSesion: iniciarSesion,
+		cerrarSesion: cerrarSesion
 	}
 };
 

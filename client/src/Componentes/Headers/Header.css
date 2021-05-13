@@ -35,7 +35,10 @@
 
 	margin-bottom: 2rem;
 }
-.botones-header .accion:hover {color: var(--color-blanco-hover);}
+.botones-header .accion:hover {
+	color: var(--color-blanco-hover);
+	cursor: pointer;
+}
 
 .botones-header .accion i {
 	margin: 0 2rem 0 0;
