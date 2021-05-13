@@ -5,11 +5,7 @@ import "./Carrito.css"
 
 const Carrito = () => {
 	const estado = useContext(EstadoGlobal);
-
-	//TODO integrar con UserAPI
-	const productos = estado.productosAPI.productos[0];
-	const carrito = [{...productos[0], cantidad: 2}, {...productos[1], cantidad: 1}, {...productos[3], cantidad: 12}];
-	//console.log(carrito[0] ? carrito[0]._id : "nope")
+	const [carrito, setCarrito] = estado.usuarioAPI.carrito;
 
 	if(carrito[0]) return (
 		<main className="seccion">

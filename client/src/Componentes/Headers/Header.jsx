@@ -33,8 +33,6 @@ const Header = () => {
 		)
 	}
 	
-	console.log(estado.usuarioAPI.sesionIniciada[0]);
-	
 	return (
 		<div className="header">
 			<Link to="/tienda" className="logo-header">La Esquina</Link>
