@@ -15,6 +15,28 @@ const UsuarioAPI = () => {
 		setCarrito([]);
 	};
 	
+	const registrarUsuario = async (nombre, apellido, email, contrasena) =>
+	{
+		try {
+			const respuesta = await axios.post("/api/usuario/registro", {
+				nombre: nombre,
+				apellido: apellido,
+				email: email,
+				contrasena: contrasena
+			});
+			
+			if(respuesta.status === 200)
+			{
+				//* 200: Exito	
+				localStorage.setItem("haySesion", true);
+				window.location.href = "/tienda";
+			}
+		} catch (error) {
+			//! Error
+			return error.response.status; // devuelve el status code para mostrarle al usuario la informacion relevante
+		}
+	}
+	
 	// intenta iniciar sesion llamando al API, y provoca que se obtenga el token de refresco si se logra
 	const iniciarSesion = async (email, contrasena) => {
 		try {
@@ -103,6 +125,7 @@ const UsuarioAPI = () => {
 		esAdmin: [esAdmin, setEsAdmin],
 		carrito: [carrito, setCarrito],
 		
+		registrarUsuario: registrarUsuario,
 		iniciarSesion: iniciarSesion,
 		cerrarSesion: cerrarSesion
 	}

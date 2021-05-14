@@ -1,0 +1,42 @@
+.formulario-registro {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	
+	margin: 6rem auto 0 auto;
+	gap: 3rem;
+	max-width: 70rem;
+}
+
+.formulario-registro .campo {
+	max-width: 70rem;
+	width: 85%;
+}
+
+.formulario-registro .acciones-registro {
+	width: 80%;
+}
+
+.formulario-registro .boton {
+	width: 100%;
+	font-size: 4.2rem;
+	margin-bottom: 5rem;
+}
+
+@media screen and (min-width: 768px) {
+	.formulario-registro .campo {
+		width: 100%;
+	}
+	.formulario-registro .campo[type="text"] {
+		flex: 30% 1 1;
+	}
+	
+	.formulario-registro .acciones-registro {
+		width: 100%;
+	}
+	.formulario-registro .boton {
+		max-width: 34rem;
+		margin: 0 auto 3rem 0;
+	}
+}

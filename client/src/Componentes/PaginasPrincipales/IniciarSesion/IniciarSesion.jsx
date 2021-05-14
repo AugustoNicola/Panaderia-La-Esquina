@@ -53,8 +53,10 @@ const IniciarSesion = () => {
 				<input type="email" name="email" required autoComplete="on" placeholder="Correo Electrónico" value={credenciales.email} onChange={cambioInput} className="campo" />
 				<input type="password" name="contrasena" required autoComplete="on" placeholder="Contraseña" value={credenciales.contrasena} onChange={cambioInput} className="campo" />
 				
-				<button type="submit" className="boton" data-transicion style={{animationDelay: "0.6s"}}>Ingresar</button>
-				<Link to="/registro" className="boton hueco" data-transicion style={{animationDelay: "0.6s"}}>Crear Cuenta</Link>
+				<div className="acciones-login">
+					<button type="submit" className="boton" data-transicion style={{animationDelay: "0.6s"}}>Ingresar</button>
+					<Link to="/registro" className="boton hueco" data-transicion style={{animationDelay: "0.6s"}}>Crear Cuenta</Link>
+				</div>
 			</form>
 		</main>
 	)

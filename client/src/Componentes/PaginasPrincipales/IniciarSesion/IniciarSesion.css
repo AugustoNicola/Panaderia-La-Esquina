@@ -6,12 +6,32 @@
 	margin: 6rem auto 0 auto;
 }
 
+.formulario-inicio-sesion .campo {
+	max-width: 70rem;
+	width: 85%;
+}
+
 .formulario-inicio-sesion .acciones-login {
 	width: 100%;
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
 }
 
 .formulario-inicio-sesion .boton {
 	width: 80%;
 	font-size: 4.2rem;
-	margin-bottom: 2rem;
+	margin-bottom: 3rem;
+}
+
+@media screen and (min-width: 768px) {
+	.formulario-inicio-sesion .acciones-login {
+		flex-flow: row nowrap;
+		gap: 2rem;
+		width: 85%;
+		max-width: 70rem;
+	}
+	.formulario-inicio-sesion .boton {
+		flex-grow: 1;
+	}
 }
