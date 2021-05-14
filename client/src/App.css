@@ -12,7 +12,18 @@
 	--color-oscuro: #402E32;
 	--color-form-gris-claro: #9F9F9F;
 	--color-form-gris-oscuro: #838383;
-	--color-advertencia: #da4032;
+	--color-advertencia: #DA4032;
+	--color-advertencia-hover: #B84136;
+	
+	--color-suave: #FAE6D9;
+	--color-suave-realce: #F5CEB5;
+	--color-enfoque: #C0682F;
+	
+	--color-suave-2: #EAD5C8;
+	--color-realce-desktop: #F5CEB5;
+	--color-realce-desktop2: #E7BFA5;
+	--color-enfoque-desktop: #C67744;
+	--color-realce-enfoque-desktop: #C0682F;
 
 	--fuente-principal: "Comfortaa", Verdana, sans-serif;
 	--fuente-cursiva: "Satisfy", "Lucida Handwriting", cursive;

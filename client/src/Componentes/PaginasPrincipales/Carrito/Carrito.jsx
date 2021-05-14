@@ -18,22 +18,24 @@ const Carrito = () => {
 				{
 				carrito.map(producto => {
 					return (
-						<div className="producto" key={producto._id}>
-							<div className="imagen">
-								<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
-							</div>
+						<div className="producto-carrito" key={producto._id}>
+							<div className="principal">	
+								<div className="imagen">
+									<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
+								</div>
 
-							<div className="informacion">
-								<h3>{producto.nombre}</h3>
-								<p>Precio unitario: ${producto.precio}</p>
+								<div className="informacion">
+									<h3>{producto.nombre}</h3>
+									<p>Precio unitario: ${producto.precio}</p>
 
-								<div className="acciones">
-									<input type="number" value={producto.cantidad} min="1" max="99" className="cantidad"/>
-									<button type="submit" className="boton borrar"><i className="fas fa-trash"></i></button>
+									<div className="acciones">
+										<input type="number" value={producto.cantidad} min="1" max="99" className="cantidad"/>
+										<button type="button" className="boton borrar"><i className="fas fa-trash"></i></button>
+									</div>
 								</div>
 							</div>
 
-							<div className="total">
+							<div className="subtotal">
 								<p>Total Producto: ${producto.precio * producto.cantidad}</p>
 							</div>
 						</div>
@@ -43,10 +45,10 @@ const Carrito = () => {
 				</div>
 				
 				<div className="total">
-
+					Total: $420
 				</div>
 				
-				<button type="submit" className="boton">Continuar compra</button>
+				<button type="submit" className="boton continuar">Continuar compra</button>
 			</div>
 			}
 			

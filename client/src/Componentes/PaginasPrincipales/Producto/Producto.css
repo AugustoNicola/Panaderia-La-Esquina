@@ -123,6 +123,7 @@
 
 .productos-relacionados .listado {
 	display: flex;
+	justify-content: safe;
 	gap: 3rem;
 	flex-flow: row nowrap;
 	overflow-x: scroll;
@@ -132,6 +133,7 @@
 .productos-relacionados .listado .producto {
 	flex: 100% 1 0;
 	min-width: 240px;
+	max-width: 350px;
 }
 
 @media screen and (min-width: 1024px) {

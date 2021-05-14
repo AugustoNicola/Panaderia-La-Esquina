@@ -1,0 +1,85 @@
+/** ################## PRODUCTO CARRITO ################## */
+.producto-carrito {
+	background-color: var(--color-suave);
+	
+	display: flex;
+	flex-flow: column nowrap;
+	width: 100%;
+}
+
+.producto-carrito .principal {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+	padding: 0 2rem;
+	margin: 1rem 0;
+}
+
+.producto-carrito .principal .imagen {
+	width: 45%;
+	height: 20rem;
+	margin: 0;
+}
+.producto-carrito .principal .imagen img {
+	width: 100%;
+	height: 100%;
+	border-radius: 5%;
+}
+
+.producto-carrito .principal .informacion {
+	width: 65%;
+	display: flex;
+	flex-flow: column nowrap;
+}
+.producto-carrito .principal .informacion h3 {
+	color: var(--color-primario);
+	text-align: center;
+	font-size: 3.6rem;
+	margin: 0;
+	word-wrap: break-word;
+}
+.producto-carrito .principal .informacion p {
+	text-align: center;
+	font-size: 2.6rem;
+}
+
+.producto-carrito .principal .informacion .acciones {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	gap: 1rem;
+}
+.producto-carrito .principal .informacion .acciones button {
+	background-color: var(--color-advertencia);
+}
+.producto-carrito .principal .informacion .acciones button:focus, .producto-carrito .principal .informacion .acciones button:hover, .producto-carrito .principal .informacion .acciones button:active {
+	background-color: var(--color-advertencia-hover);
+}
+
+.producto-carrito .subtotal {
+	background-color: var(--color-suave-realce);
+	width: 100%;
+	text-align: center;
+	font-size: 2.6rem;
+	font-weight: bold;
+}
+
+.carrito .total {
+	background-color: var(--color-enfoque);
+	color: var(--color-blanco);
+	width: 100%;
+	text-align: center;
+	font-size: 3rem;
+	font-weight: bold;
+	padding: 2.6rem 0;
+}
+
+.carrito .continuar {
+	font-size: 4.2rem;
+	padding: 3rem;
+	display: block;
+	margin: 3rem auto;
+}
