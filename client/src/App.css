@@ -10,6 +10,9 @@
 	--color-blanco: #FFF7F0;
 	--color-blanco-hover: #E6D5C6;
 	--color-oscuro: #402E32;
+	--color-form-gris-claro: #9F9F9F;
+	--color-form-gris-oscuro: #838383;
+	--color-advertencia: #da4032;
 
 	--fuente-principal: "Comfortaa", Verdana, sans-serif;
 	--fuente-cursiva: "Satisfy", "Lucida Handwriting", cursive;
@@ -56,12 +59,63 @@ body {
 	background-color: var(--color-primario);
 	font-family: var(--fuente-principal);
 	font-weight: bold;
+	text-decoration: none;
 	text-align: center;
 	cursor: pointer;
 	border: none;
 	border-radius: 15px;
 	padding: 1rem;
 }
-.boton:focus, .boton:hover {
+.boton:focus, .boton:hover, .boton:active {
 	background-color: var(--color-primario-realce);
+}
+.boton.hueco {
+	background-color: rgba(0, 0, 0, 0);
+	border: solid 4px var(--color-primario);
+	color: var(--color-primario);
+}
+.boton.hueco:focus, .boton.hueco:hover, .boton.hueco:active {
+	border: solid 4px var(--color-primario-realce);
+	color: var(--color-primario-realce);
+}
+
+.mensaje-error {
+	color: var(--color-blanco);
+	background-color: var(--color-advertencia);
+	font-family: var(--fuente-principal);
+	font-size: 2.6rem;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 10px;
+	padding: 1rem;
+	margin: 0 auto;
+	width: 85%;
+}
+
+/** ################## FORMULARIOS ################## */
+
+.campo {
+	background-color: rgba(0, 0, 0, 0);
+	color: var(--color-form-gris-oscuro);
+	font-size: 3.2rem;
+	font-weight: bold;
+	border: none;
+	border-bottom: solid 3px var(--color-form-gris-claro);
+	
+	margin-bottom: 5rem;
+}
+.campo::selection {
+	background-color: #cecece;
+	color: #616161;
+}
+.campo:focus {
+	outline: none;
+	border-color: var(--color-form-gris-oscuro);
+	color: var(--color-form-gris-oscuro);
+}
+.campo::placeholder {
+	color: var(--color-form-gris-claro);
+}
+.campo:focus::placeholder {
+	color: var(--color-form-gris-oscuro);
 }

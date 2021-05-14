@@ -1,0 +1,17 @@
+.formulario-inicio-sesion {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	
+	margin: 6rem auto 0 auto;
+}
+
+.formulario-inicio-sesion .acciones-login {
+	width: 100%;
+}
+
+.formulario-inicio-sesion .boton {
+	width: 80%;
+	font-size: 4.2rem;
+	margin-bottom: 2rem;
+}
