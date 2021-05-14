@@ -36,6 +36,12 @@ const Producto = () => {
 	const [mensajeError, setMensajeError] = useState("");
 	const intentarAniadirCarrito = async e => {
 		e.preventDefault();
+		if(!estado.usuarioAPI.sesionIniciada[0])
+		{
+			//? verificacion sesion iniciada
+			setMensajeError("Iniciá sesión para añadir productos a tu carrito.");
+			return;
+		}
 		const status = await estado.usuarioAPI.aniadirCarrito(productoSeleccionado, cantidadCarrito);
 		if(status === 409)
 		{
