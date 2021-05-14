@@ -148,3 +148,9 @@
 		min-width: 300px;
 	}
 }
+
+/** ################## ERROR ################## */
+.mensaje-error {
+	margin-top: 3rem;
+	max-width: 1000px;
+}

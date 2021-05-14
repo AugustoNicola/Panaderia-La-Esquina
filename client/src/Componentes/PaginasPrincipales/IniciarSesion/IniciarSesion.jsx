@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Link} from "react-router-dom";
 
-import MensajeError from "../../Utilidades/MensajeError/MensajeError"
+import MensajeError from "../../Utilidades/MensajeError/MensajeError";
 
 import { EstadoGlobal } from "../../../EstadoGlobal";
 import "./IniciarSesion.css";

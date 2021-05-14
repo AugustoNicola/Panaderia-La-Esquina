@@ -119,6 +119,41 @@ const UsuarioAPI = () => {
 		if(token) obtenerUsuario();
 	}, [token]);
 	
+	const aniadirCarrito = async (producto, cantidad) => {
+		try {
+			//? verificacion producto no se encuentra ya en el carrito
+			const productoNoEstaEnCarrito = carrito.every(item => {
+				return item._id !== producto._id
+			})
+			if (!productoNoEstaEnCarrito) return 409; //409: Conflict
+			
+			const respuesta = await axios.put('/api/usuario/modificarCarrito', {
+				carrito: [...carrito, {
+					...producto,
+					cantidad: cantidad
+				}]
+			}, {
+				headers: {
+					Authorization: token
+				}
+			});
+			
+			if(respuesta.status === 200)
+			{
+				//* 200: Exito
+				//sincronizar cambios en la BBDD con estado local
+				setCarrito([...carrito, {
+					...producto,
+					cantidad: cantidad
+				}]);
+				window.location.href = "/tienda"; // volver a la tienda
+			}
+		} catch (error) {
+			//! Error
+			return error.response.status; // devuelve el status code para mostrarle al usuario la informacion relevante
+		}
+	}
+	
 	return {
 		token: [token, setToken],
 		sesionIniciada: [sesionIniciada, setSesionIniciada],
@@ -127,7 +162,9 @@ const UsuarioAPI = () => {
 		
 		registrarUsuario: registrarUsuario,
 		iniciarSesion: iniciarSesion,
-		cerrarSesion: cerrarSesion
+		cerrarSesion: cerrarSesion,
+		
+		aniadirCarrito: aniadirCarrito
 	}
 };
 
