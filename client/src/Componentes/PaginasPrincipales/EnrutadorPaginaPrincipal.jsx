@@ -15,7 +15,6 @@ const EnrutadorPaginaPrincipal = () => {
 			<Route exact path="/registro" component={Registro} />
 			
 			<Route exact path="/tienda" component={Tienda} />
-
 			<Route exact path="/producto/:idProducto" component={Producto} />
 
 			<Route exact path="/carrito" component={Carrito} />

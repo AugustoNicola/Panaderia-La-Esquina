@@ -47,7 +47,8 @@ const IniciarSesion = () => {
 			<h1 data-transicion style={{animationDelay: "0.2s"}}>Iniciar Sesión</h1>
 			
 			<MensajeError mensaje={mensajeError} /> 
-							
+			
+			{!estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si no hay sesion 		
 			<form onSubmit={intentarInicioSesion} className="formulario-inicio-sesion" data-transicion style={{animationDelay: "0.4s"}}>
 				
 				<input type="email" name="email" required autoComplete="on" placeholder="Correo Electrónico" value={credenciales.email} onChange={cambioInput} className="campo" />
@@ -58,6 +59,15 @@ const IniciarSesion = () => {
 					<Link to="/registro" className="boton hueco" data-transicion style={{animationDelay: "0.6s"}}>Crear Cuenta</Link>
 				</div>
 			</form>
+			}
+			
+			{estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si hay sesion 
+			<div className="operacion-invalida" data-transicion style={{animationDelay: "0.4s"}}>
+				<h2>¡Ups!</h2>
+				<h3>Ya iniciaste sesión con un usuario</h3>
+				<h4>Cerrá sesión para entrar con otra cuenta.</h4>
+			</div>
+			}
 		</main>
 	)
 };

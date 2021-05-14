@@ -7,12 +7,15 @@ const Carrito = () => {
 	const estado = useContext(EstadoGlobal);
 	const [carrito, setCarrito] = estado.usuarioAPI.carrito;
 
-	if(carrito[0]) return (
+	//* hay usuario
+	if(estado.usuarioAPI.sesionIniciada[0]) return (
 		<main className="seccion">
-			<h1>Tu Carrito Virtual</h1>
-
-			<div className="productos-carrito">
-			{
+			<h1 data-transicion style={{animationDelay: "0.2s"}}>Tu Carrito Virtual</h1>
+			
+			{carrito[0] && //* usuario con carrito
+			<div className="carrito">
+				<div className="productos-carrito">
+				{
 				carrito.map(producto => {
 					return (
 						<div className="producto" key={producto._id}>
@@ -36,18 +39,37 @@ const Carrito = () => {
 						</div>
 					)
 				})
-			}
+				}
+				</div>
 				
+				<div className="total">
+
+				</div>
+				
+				<button type="submit" className="boton">Continuar compra</button>
 			</div>
-
-			<div className="total">
-
+			}
+			
+			{ !carrito[0] && //? usuario sin carrito
+			<div className="operacion-invalida" data-transicion style={{animationDelay: "0.2s"}}>
+				<h2>¡Ups!</h2>
+				<h3>Tu carrito está vacío</h3>
+				<h4>Agregá tus productos favoritos para verlos acá.</h4>
 			</div>
-
-			<button type="submit" className="boton">Continuar compra</button>
+			}
 		</main>
 	)
-	return (<div></div>)
+	//? no hay usuario
+	return (
+		<main className="seccion">
+			<h1 data-transicion style={{animationDelay: "0.2s"}}>Tu Carrito Virtual</h1>
+			<div className="operacion-invalida" data-transicion style={{animationDelay: "0.4s"}}>
+				<h2>¡Ups!</h2>
+				<h3>No iniciaste sesión con un usuario</h3>
+				<h4>Iniciá sesión para ver tu carrito.</h4>
+			</div>
+		</main>
+	)
 };
 
 export default Carrito;

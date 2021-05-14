@@ -168,21 +168,3 @@
 		flex-basis: calc(25% - 0.5rem);
 	}
 }
-
-/** ################## SIN PRODUCTOS ################## */
-.sin-productos {
-	text-align: center;
-}
-.sin-productos h2 {
-	font-size: 7rem;
-	color: var(--color-primario-oscuro);
-	font-weight: bold;
-}
-.sin-productos h3 {
-	font-size: 3.8rem;
-	color: var(--color-primario);
-}
-.sin-productos h4 {
-	font-size: 3rem;
-	color: #6d6d6d;
-}

@@ -79,6 +79,23 @@ body {
 	color: var(--color-primario-realce);
 }
 
+.operacion-invalida {
+	text-align: center;
+}
+.operacion-invalida h2 {
+	font-size: 7rem;
+	color: var(--color-primario-oscuro);
+	font-weight: bold;
+}
+.operacion-invalida h3 {
+	font-size: 3.8rem;
+	color: var(--color-primario);
+}
+.operacion-invalida h4 {
+	font-size: 3rem;
+	color: #6d6d6d;
+}
+
 .mensaje-error {
 	color: var(--color-blanco);
 	background-color: var(--color-advertencia);

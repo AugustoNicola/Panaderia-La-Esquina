@@ -57,6 +57,7 @@ const Registro = () => {
 			
 			<MensajeError mensaje={mensajeError} /> 
 							
+			{!estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si no hay sesion 
 			<form onSubmit={intentarRegistrarUsuario} className="formulario-registro" data-transicion style={{animationDelay: "0.4s"}}>
 				
 				<input type="text" name="nombre" required autoComplete="off" placeholder="Nombre" value={credenciales.nombre} onChange={cambioInput} className="campo" />
@@ -73,6 +74,15 @@ const Registro = () => {
 					<button type="submit" className="boton" data-transicion style={{animationDelay: "0.6s"}}>Registrate</button>
 				</div>
 			</form>
+			}
+			
+			{estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si hay sesion 
+			<div className="operacion-invalida" data-transicion style={{animationDelay: "0.4s"}}>
+				<h2>¡Ups!</h2>
+				<h3>Ya iniciaste sesión con un usuario</h3>
+				<h4>Cerrá sesión para crear una cuenta.</h4>
+			</div>
+			}
 		</main>
 	)
 };
