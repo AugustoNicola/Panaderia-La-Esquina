@@ -1,4 +1,4 @@
-/** ################## PRODUCTO CARRITO ################## */
+/** ################## CARRITO MOBILE ################## */
 .producto-carrito {
 	background-color: var(--color-suave);
 	
@@ -82,4 +82,98 @@
 	padding: 3rem;
 	display: block;
 	margin: 3rem auto;
+}
+
+/** ################## CARRITO DESKTOP ################## */
+.tabla-carrito {
+	margin-top: 3rem;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.tabla-carrito .encabezados th {
+	background-color: var(--color-primario);
+	color: var(--color-blanco);
+	font-size: 3rem;
+	padding: 1.5rem 0;
+}
+.tabla-carrito .encabezados th.subtotal {
+	background-color: var(--color-enfoque)
+}
+
+.tabla-carrito .fila-producto {
+	background-color: var(--color-suave);
+}
+.tabla-carrito .fila-producto:nth-child(even) {
+	background-color: var(--color-suave-2);
+}
+
+.fila-producto .celda-imagen .imagen {
+	width: 27rem;
+	height: 22rem;
+	padding: 1.5rem;
+}
+.fila-producto .celda-imagen img {
+	width: 100%;
+	height: 100%;
+	border-radius: 5%;
+}
+
+.fila-producto .celda-nombre h3 {
+	color: var(--color-primario);
+	text-align: center;
+	font-size: 3.6rem;
+	margin: 0;
+	word-wrap: break-word;
+}
+
+.fila-producto .celda-precio p {
+	text-align: center;
+	font-size: 3.2rem;
+}
+
+.fila-producto .celda-acciones .acciones {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.fila-producto .celda-acciones .acciones button {
+	background-color: var(--color-advertencia);
+}
+.fila-producto .celda-acciones .acciones button:hover {
+	background-color: var(--color-advertencia-hover);
+}
+
+.fila-producto .celda-subtotal {
+	background-color: var(--color-realce-desktop);
+}
+.fila-producto:nth-child(even) .celda-subtotal {
+	background-color: var(--color-realce-desktop2);
+}
+.fila-producto .celda-subtotal p {
+	text-align: center;
+	font-size: 3rem;
+	font-weight: bold;
+}
+
+.total-final {
+	color: var(--color-blanco);
+	font-size: 4rem;
+	text-align: center;
+	background-color: var(--color-enfoque-desktop);
+	
+}
+.total-final td {padding: 1.8rem;}
+.total-final .precio {
+	background-color: var(--color-realce-enfoque-desktop);
+}
+
+@media screen and (min-width: 1025px) {
+	.boton.continuar {
+		font-size: 3.2rem;
+		padding: 2.2rem 3rem;
+		margin: 3rem 3rem 3rem auto;
+	}
 }

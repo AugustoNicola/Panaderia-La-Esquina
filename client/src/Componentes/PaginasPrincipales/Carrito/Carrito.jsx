@@ -13,9 +13,10 @@ const Carrito = () => {
 			<h1 data-transicion style={{animationDelay: "0.2s"}}>Tu Carrito Virtual</h1>
 			
 			{carrito[0] && //* usuario con carrito
-			<div className="carrito">
+			<div className="carrito" data-transicion style={{animationDelay: "0.4s"}}>
 				<div className="productos-carrito">
 				{
+				window.innerWidth <= 1024 && //? estilos mobile
 				carrito.map(producto => {
 					return (
 						<div className="producto-carrito" key={producto._id}>
@@ -42,13 +43,61 @@ const Carrito = () => {
 					)
 				})
 				}
+				{
+				window.innerWidth > 1024 && //? estilos desktop
+				<table className="tabla-carrito" data-transicion style={{animationDelay: "0.4s"}}>
+					<colgroup>
+						<col span="1" style={{width: "20%"}}></col>
+						<col span="1" style={{width: "20%"}}></col>
+						<col span="1" style={{width: "15%"}}></col>
+						<col span="1" style={{width: "15%"}}></col>
+						<col span="1" style={{width: "10%"}}></col>
+					</colgroup>
+					
+					<tr className="encabezados">
+						<th colSpan="2">Producto</th>
+						<th>Pr. unitario</th>
+						<th>Cantidad</th>
+						<th className="subtotal">Subtotal</th>
+					</tr>
+					
+					{
+					carrito.map(producto => {
+						return (
+							<tr className="fila-producto">
+								<td className="celda-imagen">
+									<div className="imagen">
+										<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
+									</div>
+								</td>
+								<td className="celda-nombre">
+									<h3>{producto.nombre}</h3>
+								</td>
+								<td className="celda-precio">
+									<p>${producto.precio}</p>
+								</td>
+								<td className="celda-acciones">
+									<div className="acciones">
+										<input type="number" value={producto.cantidad} min="1" max="99" className="cantidad"/>
+										<button type="button" className="boton borrar"><i className="fas fa-trash"></i></button>
+									</div>
+								</td>
+								<td className="celda-subtotal">
+									<p>${producto.precio * producto.cantidad}</p>
+								</td>
+							</tr>
+						)
+					})
+					}
+					<tr className="total-final">
+						<td colSpan="4">Total Final</td>
+						<td className="precio">$5000</td>
+					</tr>
+				</table>
+				}
 				</div>
 				
-				<div className="total">
-					Total: $420
-				</div>
-				
-				<button type="submit" className="boton continuar">Continuar compra</button>
+				<button type="submit" className="boton continuar" data-transicion style={{animationDelay: "0.6s"}}>Continuar compra</button>
 			</div>
 			}
 			
