@@ -1,16 +1,51 @@
 import React, {useContext, useState} from 'react';
+import {Link} from "react-router-dom";
 
 import { EstadoGlobal } from "../../../EstadoGlobal";
-import "./Carrito.css"
+import "./Carrito.css";
+import MensajeError from "../../Utilidades/MensajeError/MensajeError";
+import ProductoCarritoMobile from "./ProductoCarritoMobile";
+import ProductoCarritoDesktop from "./ProductoCarritoDesktop";
 
 const Carrito = () => {
 	const estado = useContext(EstadoGlobal);
 	const [carrito, setCarrito] = estado.usuarioAPI.carrito;
-
+	const [mensajeError, setMensajeError] = useState("");
+	
+	const intentarModificarCantidad = async (e, id) => {
+		const status = await estado.usuarioAPI.modificarCantidadProducto(id, e.target.value);
+		if(status === 401 || status === 404)
+		{
+			//? error de verificacion de usuario
+			setMensajeError("Ocurrió un problema al comprobar la información de usuario.");
+		}
+		if(status === 500)
+		{
+			//! error interno
+			setMensajeError("Error interno, por favor intente nuevamente.");
+		}
+	};
+	
+	const intentarEliminarProducto = async (id) => {
+		const status = await estado.usuarioAPI.eliminarProducto(id);
+		if(status === 401 || status === 404)
+		{
+			//? error de verificacion de usuario
+			setMensajeError("Ocurrió un problema al comprobar la información de usuario.");
+		}
+		if(status === 500)
+		{
+			//! error interno
+			setMensajeError("Error interno, por favor intente nuevamente.");
+		}
+	};
+	
 	//* hay usuario
 	if(estado.usuarioAPI.sesionIniciada[0]) return (
 		<main className="seccion">
 			<h1 data-transicion style={{animationDelay: "0.2s"}}>Tu Carrito Virtual</h1>
+			
+			<MensajeError mensaje={mensajeError} /> 	
 			
 			{carrito[0] && //* usuario con carrito
 			<div className="carrito" data-transicion style={{animationDelay: "0.4s"}}>
@@ -19,27 +54,12 @@ const Carrito = () => {
 				window.innerWidth <= 1024 && //? estilos mobile
 				carrito.map(producto => {
 					return (
-						<div className="producto-carrito" key={producto._id}>
-							<div className="principal">	
-								<div className="imagen">
-									<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
-								</div>
-
-								<div className="informacion">
-									<h3>{producto.nombre}</h3>
-									<p>Precio unitario: ${producto.precio}</p>
-
-									<div className="acciones">
-										<input type="number" value={producto.cantidad} min="1" max="99" className="cantidad"/>
-										<button type="button" className="boton borrar"><i className="fas fa-trash"></i></button>
-									</div>
-								</div>
-							</div>
-
-							<div className="subtotal">
-								<p>Total Producto: ${producto.precio * producto.cantidad}</p>
-							</div>
-						</div>
+						<ProductoCarritoMobile
+							key={producto._id}
+							producto={producto}
+							intentarModificarCantidad={intentarModificarCantidad}
+							intentarEliminarProducto={intentarEliminarProducto}>
+						</ProductoCarritoMobile>
 					)
 				})
 				}
@@ -64,40 +84,26 @@ const Carrito = () => {
 					{
 					carrito.map(producto => {
 						return (
-							<tr className="fila-producto">
-								<td className="celda-imagen">
-									<div className="imagen">
-										<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
-									</div>
-								</td>
-								<td className="celda-nombre">
-									<h3>{producto.nombre}</h3>
-								</td>
-								<td className="celda-precio">
-									<p>${producto.precio}</p>
-								</td>
-								<td className="celda-acciones">
-									<div className="acciones">
-										<input type="number" value={producto.cantidad} min="1" max="99" className="cantidad"/>
-										<button type="button" className="boton borrar"><i className="fas fa-trash"></i></button>
-									</div>
-								</td>
-								<td className="celda-subtotal">
-									<p>${producto.precio * producto.cantidad}</p>
-								</td>
-							</tr>
+							<ProductoCarritoDesktop 
+								key={producto._id}
+								producto={producto}
+								intentarModificarCantidad={intentarModificarCantidad}
+								intentarEliminarProducto={intentarEliminarProducto}>
+							</ProductoCarritoDesktop>
 						)
 					})
 					}
 					<tr className="total-final">
 						<td colSpan="4">Total Final</td>
-						<td className="precio">$5000</td>
+						<td className="precio">
+							${carrito.reduce((previo, producto) => {return previo + (producto.precio * producto.cantidad)},0)}
+						</td>
 					</tr>
 				</table>
 				}
 				</div>
 				
-				<button type="submit" className="boton continuar" data-transicion style={{animationDelay: "0.6s"}}>Continuar compra</button>
+				<Link to="/checkout"><button type="submit" className="boton continuar" data-transicion style={{animationDelay: "0.6s"}}>Continuar compra</button></Link>
 			</div>
 			}
 			

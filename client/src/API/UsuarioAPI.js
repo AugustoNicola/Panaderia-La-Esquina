@@ -119,19 +119,10 @@ const UsuarioAPI = () => {
 		if(token) obtenerUsuario();
 	}, [token]);
 	
-	const aniadirCarrito = async (producto, cantidad) => {
+	const actualizarCarrito = async (nuevoCarrito) => {
 		try {
-			//? verificacion producto no se encuentra ya en el carrito
-			const productoNoEstaEnCarrito = carrito.every(item => {
-				return item._id !== producto._id
-			})
-			if (!productoNoEstaEnCarrito) return 409; //409: Conflict
-			
 			const respuesta = await axios.put('/api/usuario/modificarCarrito', {
-				carrito: [...carrito, {
-					...producto,
-					cantidad: cantidad
-				}]
+				carrito: nuevoCarrito
 			}, {
 				headers: {
 					Authorization: token
@@ -142,17 +133,78 @@ const UsuarioAPI = () => {
 			{
 				//* 200: Exito
 				//sincronizar cambios en la BBDD con estado local
-				setCarrito([...carrito, {
-					...producto,
-					cantidad: cantidad
-				}]);
-				window.location.href = "/tienda"; // volver a la tienda
+				setCarrito(nuevoCarrito);
 			}
+			return respuesta.status;
 		} catch (error) {
 			//! Error
 			return error.response.status; // devuelve el status code para mostrarle al usuario la informacion relevante
 		}
-	}
+	};
+	
+	const aniadirCarrito = async (producto, cantidad) => {
+		try {
+			//? verificacion producto no se encuentra ya en el carrito
+			const productoNoEstaEnCarrito = carrito.every(item => {
+				return item._id !== producto._id
+			})
+			if (!productoNoEstaEnCarrito) return 409; //409: Conflict
+			
+			const status = await actualizarCarrito([...carrito, {
+				...producto,
+				cantidad: cantidad
+			}]);
+			if(status === 200)
+			{
+				//* 200: Exito
+				window.location.href = "/tienda"; // volver a la tienda
+			}
+			return status; // devuelve el status code para mostrarle al usuario la informacion relevante
+		} catch (error) {
+			//! Error
+			console.log(error);
+		}
+	};
+	
+	const modificarCantidadProducto = async (id, cantidad) => {
+		try {
+			let nuevoCarrito = carrito;
+			nuevoCarrito.forEach(producto => {
+				if(producto._id == id) producto.cantidad = cantidad;
+			});
+			
+			const status = await actualizarCarrito(nuevoCarrito);
+			if(status === 200)
+			{
+				//* 200: Exito
+				window.location.href = "/carrito"; // recargar carrito
+			}
+			return status; // devuelve el status code para mostrarle al usuario la informacion relevante
+		} catch (error) {
+			//! Error
+			console.log(error);
+		}
+	};
+	
+	const eliminarProducto = async (id) => {
+		try {
+			let nuevoCarrito = carrito;
+			nuevoCarrito.forEach((producto, indice) => {
+				if(producto._id == id) nuevoCarrito.splice(indice, 1);
+			});
+			
+			const status = await actualizarCarrito(nuevoCarrito);
+			if(status === 200)
+			{
+				//* 200: Exito
+				window.location.href = "/carrito"; // recargar carrito
+			}
+			return status; // devuelve el status code para mostrarle al usuario la informacion relevante
+		} catch (error) {
+			//! Error
+			console.log(error);
+		}	
+	};
 	
 	return {
 		token: [token, setToken],
@@ -164,7 +216,9 @@ const UsuarioAPI = () => {
 		iniciarSesion: iniciarSesion,
 		cerrarSesion: cerrarSesion,
 		
-		aniadirCarrito: aniadirCarrito
+		aniadirCarrito: aniadirCarrito,
+		modificarCantidadProducto: modificarCantidadProducto,
+		eliminarProducto: eliminarProducto
 	}
 };
 
