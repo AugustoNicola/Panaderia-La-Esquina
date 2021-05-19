@@ -52,16 +52,23 @@ const Carrito = () => {
 				<div className="productos-carrito">
 				{
 				window.innerWidth <= 1024 && //? estilos mobile
-				carrito.map(producto => {
-					return (
-						<ProductoCarritoMobile
-							key={producto._id}
-							producto={producto}
-							intentarModificarCantidad={intentarModificarCantidad}
-							intentarEliminarProducto={intentarEliminarProducto}>
-						</ProductoCarritoMobile>
-					)
-				})
+				<>
+					{
+					carrito.map(producto => {
+						return (
+							<ProductoCarritoMobile
+								key={producto._id}
+								producto={producto}
+								intentarModificarCantidad={intentarModificarCantidad}
+								intentarEliminarProducto={intentarEliminarProducto}>
+							</ProductoCarritoMobile>
+						)
+					})
+					}
+					<div className="total">
+						Total: ${carrito.reduce((previo, producto) => {return previo + (producto.precio * producto.cantidad)},0)}
+					</div>
+				</>
 				}
 				{
 				window.innerWidth > 1024 && //? estilos desktop
