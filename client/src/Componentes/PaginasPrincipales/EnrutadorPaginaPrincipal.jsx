@@ -7,6 +7,7 @@ import Registro from "./Registro/Registro";
 import Tienda from "./Tienda/Tienda";
 import Producto from "./Producto/Producto";
 import Carrito from "./Carrito/Carrito";
+import Checkout from "./Checkout/Checkout";
 
 const EnrutadorPaginaPrincipal = () => {
 	return (
@@ -18,6 +19,7 @@ const EnrutadorPaginaPrincipal = () => {
 			<Route exact path="/producto/:idProducto" component={Producto} />
 
 			<Route exact path="/carrito" component={Carrito} />
+			<Route exact path="/checkout" component={Checkout} />
 		</Switch>
 	);
 };
