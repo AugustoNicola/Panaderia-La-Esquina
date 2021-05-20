@@ -89,3 +89,23 @@
 	display: block;
 	margin: 3rem auto;
 }
+
+@media screen and (min-width: 1025px) {
+	.contenedor-facturacion {
+		display: flex;
+		flex-flow: row nowrap;
+	}
+	
+	.formulario-facturacion, .pedido-facturacion {
+		margin-top: 2rem;
+	}
+	
+	.pedido-facturacion .productos .producto .cantidad {
+		flex: 1 1 20%;
+		margin: 0 1rem;
+	}
+	
+	.pedido-facturacion .boton {
+		padding: 2rem 4rem;
+	}
+}

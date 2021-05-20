@@ -30,24 +30,25 @@ const Checkout = () => {
 	
 	return (
 		<main className="seccion">
-			<h1 data-transicion style={{animationDelay: "0.2s"}}>Detalles de Facturación</h1>
-			
-			<MensajeError mensaje={mensajeError} /> 
 							
-			{estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si hay sesion 
-			<form onSubmit={cambioInput}>
+			{(estado.usuarioAPI.sesionIniciada[0] && carrito[0]) && //* solo se muestra si hay sesion y el carrito tiene elementos
+			<form onSubmit={cambioInput} className="contenedor-facturacion">
 				<div className="formulario-facturacion" data-transicion style={{animationDelay: "0.4s"}}>
-					<input type="text" name="nombre" required autoComplete="off" placeholder="Nombre" value={credenciales.nombre} onChange={cambioInput} className="campo" />
+					<h1>Detalles de Facturación</h1>
 					
-					<input type="text" name="apellido" required autoComplete="off" placeholder="Apellido" value={credenciales.apellido} onChange={cambioInput} className="campo" />
+					<MensajeError mensaje={mensajeError} /> 
 					
-					<input type="text" name="direccion" required autoComplete="off" placeholder="Dirección (calle y número)" value={credenciales.direccion} onChange={cambioInput} className="campo" />
+					<input type="text" name="nombre" required autoComplete="on" placeholder="Nombre" value={credenciales.nombre} onChange={cambioInput} className="campo" />
 					
-					<input type="text" name="extraDireccion" autoComplete="off" placeholder="Depto, etc (opcional)" value={credenciales.extraDireccion} onChange={cambioInput} className="campo" />
+					<input type="text" name="apellido" required autoComplete="on" placeholder="Apellido" value={credenciales.apellido} onChange={cambioInput} className="campo" />
 					
-					<input type="email" name="email" required autoComplete="off" placeholder="Correo Electrónico" value={credenciales.email} onChange={cambioInput} className="campo" />
+					<input type="text" name="direccion" required autoComplete="on" placeholder="Dirección (calle y número)" value={credenciales.direccion} onChange={cambioInput} className="campo" />
 					
-					<input type="number" name="telefono" value={credenciales.telefono} placeholder="Teléfono" min="1000000000" max="9999999999" onChange={cambioInputTelefono} className="campo" />
+					<input type="text" name="extraDireccion" autoComplete="on" placeholder="Depto, etc (opcional)" value={credenciales.extraDireccion} onChange={cambioInput} className="campo" />
+					
+					<input type="email" name="email" required autoComplete="on" placeholder="Correo Electrónico" value={credenciales.email} onChange={cambioInput} className="campo" />
+					
+					<input type="number" name="telefono" required autoComplete="on" value={credenciales.telefono} placeholder="Teléfono" min="1000000000" max="9999999999" onChange={cambioInputTelefono} className="campo" />
 					
 				</div>
 				
@@ -80,8 +81,16 @@ const Checkout = () => {
 			</form>
 			}
 			
-			{!estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si no hay sesion 
-			<div className="operacion-invalida" data-transicion style={{animationDelay: "0.4s"}}>
+			{(estado.usuarioAPI.sesionIniciada[0] && !carrito[0]) && //? usuario sin carrito
+			<div className="operacion-invalida" data-transicion style={{animationDelay: "0.2s"}}>
+				<h2>¡Ups!</h2>
+				<h3>Tu carrito está vacío</h3>
+				<h4>Agregá tus productos favoritos para realizar un pedido.</h4>
+			</div>
+			}
+			
+			{!estado.usuarioAPI.sesionIniciada[0] && //? no hay sesion 
+			<div className="operacion-invalida" data-transicion style={{animationDelay: "0.2s"}}>
 				<h2>¡Ups!</h2>
 				<h3>No iniciaste sesión con un usuario</h3>
 				<h4>Iniciá sesión para realizar un pedido.</h4>
