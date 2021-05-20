@@ -1,5 +1,6 @@
 import React, {useContext, useState} from 'react';
 
+import "./Checkout.css";
 import { EstadoGlobal } from "../../../EstadoGlobal";
 import MensajeError from "../../Utilidades/MensajeError/MensajeError";
 
@@ -35,14 +36,14 @@ const Checkout = () => {
 							
 			{estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si hay sesion 
 			<form onSubmit={cambioInput}>
-				<div className="formulario-facturacion">
+				<div className="formulario-facturacion" data-transicion style={{animationDelay: "0.4s"}}>
 					<input type="text" name="nombre" required autoComplete="off" placeholder="Nombre" value={credenciales.nombre} onChange={cambioInput} className="campo" />
 					
 					<input type="text" name="apellido" required autoComplete="off" placeholder="Apellido" value={credenciales.apellido} onChange={cambioInput} className="campo" />
 					
 					<input type="text" name="direccion" required autoComplete="off" placeholder="Dirección (calle y número)" value={credenciales.direccion} onChange={cambioInput} className="campo" />
 					
-					<input type="text" name="extraDireccion" autoComplete="off" placeholder="Depto., habitación, etc (opcional)" value={credenciales.extraDireccion} onChange={cambioInput} className="campo" />
+					<input type="text" name="extraDireccion" autoComplete="off" placeholder="Depto, etc (opcional)" value={credenciales.extraDireccion} onChange={cambioInput} className="campo" />
 					
 					<input type="email" name="email" required autoComplete="off" placeholder="Correo Electrónico" value={credenciales.email} onChange={cambioInput} className="campo" />
 					
@@ -50,7 +51,7 @@ const Checkout = () => {
 					
 				</div>
 				
-				<div className="pedido-facturacion">
+				<div className="pedido-facturacion" data-transicion style={{animationDelay: "0.6s"}}>
 					<h1>Tu Pedido</h1>
 					<div className="productos">	
 						{
@@ -73,7 +74,7 @@ const Checkout = () => {
 						</div>
 					</div>
 					
-					<button type="submit" className="boton" data-transicion style={{animationDelay: "0.6s"}}>Realizar Pedido</button>
+					<button type="submit" className="boton" data-transicion style={{animationDelay: "0.8s"}}>Realizar Pedido</button>
 				</div>
 				
 			</form>
