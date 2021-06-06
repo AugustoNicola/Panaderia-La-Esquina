@@ -83,11 +83,11 @@
 	font-weight: bold;
 }
 
-.pedido-facturacion .boton {
-	font-size: 4.2rem;
-	padding: 3rem 5rem;
-	display: block;
+.pedido-facturacion .boton-paypal-contenedor {
 	margin: 3rem auto;
+	display: block;
+	max-width: 100%;
+	text-align: center;
 }
 
 @media screen and (min-width: 1025px) {
