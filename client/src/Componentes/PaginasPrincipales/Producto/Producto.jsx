@@ -7,6 +7,7 @@ import ProductoRelacionado from "../Tienda/Producto";
 
 import MensajeInfo from "../../Utilidades/MensajeInfo/MensajeInfo";
 import "./Producto.css"
+import NoEncontrado from "../NoEncontrado/NoEncontrado";
 
 const Producto = () => {
 	const estado = useContext(EstadoGlobal);
@@ -97,7 +98,7 @@ const Producto = () => {
 		</div>
 		</>
 	)
-	return <div ></div>
+	return <NoEncontrado />
 };
 
 export default Producto;

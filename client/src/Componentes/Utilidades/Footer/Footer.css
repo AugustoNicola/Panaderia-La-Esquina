@@ -111,10 +111,9 @@
 	background-color: var(--color-primario-oscuro);
 	padding: 1.2rem 0;
 }
-.copyright p {
+.copyright a p {
 	margin: 0;
 	font-size: 1.4rem;
-	color: var(--color-blanco);
 	text-align: center;
 }
 .copyright a, .copyright a:visited {
@@ -124,4 +123,7 @@
 .copyright a:hover {
 	color: var(--color-blanco-hover);
 	cursor: pointer;
+}
+.copyright a i {
+	font-size: 1.7rem;
 }

@@ -11,7 +11,7 @@ const Footer = () => {
 			<nav className="navegacion-footer">
 				<Link to="/">Página Principal</Link>
 				<Link to="/tienda">Tienda Virtual</Link>
-				<Link to="/contacto">Contacto</Link>
+				<Link to="/carrito">Tu Carrito</Link>
 			</nav>
 			<div className="redes-sociales">
 				<i className="fab fa-facebook-f"></i>
@@ -20,7 +20,7 @@ const Footer = () => {
 			</div>
 		</div>
 		<div className="copyright">
-			<p>Copyright &copy; 2021 <a target="_blank" rel="noreferrer" href="https://github.com/AugustoNicola">Augusto Nicola</a></p>
+		<a target="_blank" rel="noreferrer" href="https://github.com/AugustoNicola/Proyecto-LaEsquina"><p>Copyright &copy; 2021 Augusto Nicola <i class="fab fa-github"></i></p></a>
 		</div>
 		</>
 	)
