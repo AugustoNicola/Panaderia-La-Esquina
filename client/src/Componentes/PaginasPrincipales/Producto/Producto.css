@@ -112,6 +112,10 @@
 .productos-relacionados {
 	padding: 0 1rem;
 	margin-top: 8rem;
+	
+	flex: 100% 0 1;
+	max-width: 100%;
+	margin: 0 auto;
 }
 
 .productos-relacionados h2 {

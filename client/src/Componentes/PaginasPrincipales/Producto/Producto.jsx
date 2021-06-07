@@ -82,7 +82,7 @@ const Producto = () => {
 			</div>
 		</main>
 
-		<div className="productos-relacionados seccion" data-transicion style={{animationDelay: "0.8s"}}>
+		<div className="productos-relacionados" data-transicion style={{animationDelay: "0.8s"}}>
 			<h2>Productos Relacionados</h2>
 			<div className="listado">
 				{
