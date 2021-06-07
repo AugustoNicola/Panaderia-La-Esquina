@@ -144,6 +144,7 @@
 	.productos-relacionados {
 		margin-bottom: 5rem;
 		padding: 0 7rem;
+		flex: 1200px 0 1;
 	}
 	
 	.productos-relacionados .listado {

@@ -105,6 +105,8 @@ div.app {
 
 .operacion-invalida {
 	text-align: center;
+	align-self: center;
+	height: 100%;
 }
 .operacion-invalida h2 {
 	font-size: 7rem;
