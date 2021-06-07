@@ -107,6 +107,15 @@ body {
 	font-size: 3rem;
 	color: #6d6d6d;
 }
+.operacion-invalida a {
+	text-decoration: underline;
+	color: var(--color-primario-oscuro);
+	white-space: nowrap;
+}
+.operacion-invalida a:hover, .operacion-invalida a:active {
+	text-decoration: underline;
+	color: var(--color-primario-realce);
+}
 
 .mensaje-info {
 	color: var(--color-blanco);

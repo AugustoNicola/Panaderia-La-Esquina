@@ -9,6 +9,8 @@ import Producto from "./Producto/Producto";
 import Carrito from "./Carrito/Carrito";
 import Checkout from "./Checkout/Checkout";
 
+import NoEncontrado from "./NoEncontrado/NoEncontrado";
+
 const EnrutadorPaginaPrincipal = () => {
 	return (
 		<Switch>
@@ -20,6 +22,8 @@ const EnrutadorPaginaPrincipal = () => {
 
 			<Route exact path="/carrito" component={Carrito} />
 			<Route exact path="/checkout" component={Checkout} />
+			
+			<Route path="*" component={NoEncontrado} />
 		</Switch>
 	);
 };
