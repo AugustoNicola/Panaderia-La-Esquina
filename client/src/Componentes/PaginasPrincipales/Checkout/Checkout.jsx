@@ -1,24 +1,16 @@
-import React, {useContext, useState, useEffect} from 'react';
+import React, {useContext, useState} from 'react';
 import {PayPalScriptProvider, PayPalButtons, FUNDING} from "@paypal/react-paypal-js";
 
 import "./Checkout.css";
 import { EstadoGlobal } from "../../../EstadoGlobal";
-import MensajeError from "../../Utilidades/MensajeError/MensajeError";
+import MensajeInfo from "../../Utilidades/MensajeInfo/MensajeInfo";
 
 const Checkout = () => {
 	const estado = useContext(EstadoGlobal);
 	const carrito = estado.usuarioAPI.carrito[0];
-	const [mensajeError, setMensajeError] = useState("");
+	const [mensaje, setMensaje] = useState({tipo: "", texto: ""});
 	
-	const [habilitarPaypal, setHabilitarPaypal] = useState(true);
-	const opcionesPaypal = {
-		"client-id": "AXHJZrXdVMOSroBaaqIZzgKXtL914XZm8s7zvtPWBWW5l-3ICKzotmKtpqm1_NOtLd36puXeIKBulvrJ",
-		"buyer-country": "AR",
-		locale: "es_AR",
-		currency: "USD",
-		intent: "capture"
-	};
-	
+	//* credenciales
 	const [credenciales, setCredenciales] = useState({
 		nombre: "",
 		apellido: "",
@@ -28,26 +20,91 @@ const Checkout = () => {
 		telefono: ""
 	});
 	
+	const verificarCampos = () => {
+		const formulario = document.getElementById("formulario-facturacion");
+		const inputs = formulario.querySelectorAll("[required]");
+		
+		let validado = true;
+		inputs.forEach(input => {
+			if(!validado) return;
+			if(!input.value) validado = false;
+		});
+		setHabilitarPaypal(validado);
+	};
+	
 	const cambioInput = e => {
 		const {name, value} = e.target;
 		setCredenciales({...credenciales, [name]:value});
+		
+		verificarCampos();
 	};
 	const cambioInputTelefono = e => {
 		let {name, value} = e.target;
 		value = (value >= 1 && value <= 9999999999 ? value : credenciales.telefono); //verificacion especial por ser numero
 		setCredenciales({...credenciales, [name]:value});
+		
+		verificarCampos();
+	};
+	
+	//* integracion pagos
+	const [habilitarPaypal, setHabilitarPaypal] = useState(false);
+	const opcionesPaypal = {
+		"client-id": "AXHJZrXdVMOSroBaaqIZzgKXtL914XZm8s7zvtPWBWW5l-3ICKzotmKtpqm1_NOtLd36puXeIKBulvrJ",
+		"buyer-country": "AR",
+		locale: "es_AR",
+		currency: "MXN",
+		intent: "capture"
+	};
+	
+	const crearOrden = (data, actions) => {
+		const itemsCarrito = carrito.map((producto) => {
+			return {
+				name: producto.nombre,
+				unit_amount: {
+					currency_code: "MXN",
+					value: producto.precio
+				},
+				quantity: producto.cantidad
+			}
+		});
+		const totalCarrito = carrito.reduce((previo, producto) => {return previo + (producto.precio * producto.cantidad)},0)
+		
+		return actions.order.create({
+			purchase_units: [{
+				amount: {
+					currency_code: "MXN",
+					value: totalCarrito,
+					breakdown: {
+						item_total: {
+							currency_code: "MXN",
+							value: totalCarrito
+						}
+					}
+				},
+				items: itemsCarrito
+			}]
+		});
+	};
+	
+	const ordenAprobada = async (data, actions) => {
+		setMensaje({
+			tipo: "exito",
+			texto: "¡El pedido ha sido realizado con éxito!"
+		});
+		
+		setTimeout(async () => {
+			await estado.usuarioAPI.borrarCarrito(); //tambien redirige a /tienda
+		}, 3000);
 	};
 	
 	return (
 		<PayPalScriptProvider options={opcionesPaypal}>
 			<main className="seccion">
-								
+				<MensajeInfo tipo={mensaje.tipo} mensaje={mensaje.texto} />
 				{(estado.usuarioAPI.sesionIniciada[0] && carrito[0]) && //* solo se muestra si hay sesion y el carrito tiene elementos
 				<form onSubmit={cambioInput} className="contenedor-facturacion">
-					<div className="formulario-facturacion" data-transicion style={{animationDelay: "0.4s"}}>
+					<div className="formulario-facturacion" id="formulario-facturacion" data-transicion style={{animationDelay: "0.4s"}}>
 						<h1>Detalles de Facturación</h1>
-						
-						<MensajeError mensaje={mensajeError} /> 
 						
 						<input type="text" name="nombre" required autoComplete="on" placeholder="Nombre" value={credenciales.nombre} onChange={cambioInput} className="campo" />
 						
@@ -94,17 +151,11 @@ const Checkout = () => {
 									height: 55
 								}}
 								fundingSource={FUNDING.PAYPAL}
-								createOrder = {(data, actions) => {
-									return actions.order.create({
-										purchase_units: [{
-											amount: {
-												value: '1.23'
-											}
-										}]
-									});
-								}}
+								createOrder = {crearOrden}
+								onApprove = {ordenAprobada}
 							/>
 						</div>
+						<MensajeInfo tipo={"principal"} mensaje={"Todas las transferencias son ficticias, no se realizará ningún cobro real"} />
 					</div>
 					
 				</form>

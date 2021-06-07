@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import { EstadoGlobal } from "../../../EstadoGlobal";
 import "./Carrito.css";
-import MensajeError from "../../Utilidades/MensajeError/MensajeError";
+import MensajeInfo from "../../Utilidades/MensajeInfo/MensajeInfo";
 import ProductoCarritoMobile from "./ProductoCarritoMobile";
 import ProductoCarritoDesktop from "./ProductoCarritoDesktop";
 
@@ -45,7 +45,7 @@ const Carrito = () => {
 		<main className="seccion">
 			<h1 data-transicion style={{animationDelay: "0.2s"}}>Tu Carrito Virtual</h1>
 			
-			<MensajeError mensaje={mensajeError} /> 	
+			<MensajeInfo tipo={"error"} mensaje={mensajeError} /> 	
 			
 			{carrito[0] && //* usuario con carrito
 			<div className="carrito" data-transicion style={{animationDelay: "0.4s"}}>

@@ -12,6 +12,7 @@
 	--color-oscuro: #402E32;
 	--color-form-gris-claro: #9F9F9F;
 	--color-form-gris-oscuro: #838383;
+	--color-exito: #007e33;
 	--color-advertencia: #DA4032;
 	--color-advertencia-hover: #B84136;
 	
@@ -107,18 +108,21 @@ body {
 	color: #6d6d6d;
 }
 
-.mensaje-error {
+.mensaje-info {
 	color: var(--color-blanco);
-	background-color: var(--color-advertencia);
 	font-family: var(--fuente-principal);
 	font-size: 2.6rem;
 	font-weight: bold;
 	text-align: center;
 	border-radius: 10px;
 	padding: 1rem;
-	margin: 0 auto;
+	margin: 1.5rem auto;
 	width: 85%;
+	max-width: 1200px;
 }
+.mensaje-info.error {background-color: var(--color-advertencia);}
+.mensaje-info.principal {background-color: var(--color-primario);}
+.mensaje-info.exito {background-color: var(--color-exito);}
 
 /** ################## FORMULARIOS ################## */
 

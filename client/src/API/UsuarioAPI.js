@@ -206,6 +206,20 @@ const UsuarioAPI = () => {
 		}	
 	};
 	
+	const borrarCarrito = async () => {
+		try {
+			const status = await actualizarCarrito([]);
+			if(status === 200)
+			{
+				//* 200: Exito
+				window.location.href = "/tienda";
+			}
+		} catch (error) {
+			//! Error
+			console.log(error);
+		}
+	}
+	
 	return {
 		token: [token, setToken],
 		sesionIniciada: [sesionIniciada, setSesionIniciada],
@@ -218,7 +232,8 @@ const UsuarioAPI = () => {
 		
 		aniadirCarrito: aniadirCarrito,
 		modificarCantidadProducto: modificarCantidadProducto,
-		eliminarProducto: eliminarProducto
+		eliminarProducto: eliminarProducto,
+		borrarCarrito: borrarCarrito
 	}
 };
 

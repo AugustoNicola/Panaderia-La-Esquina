@@ -1,7 +1,7 @@
 import React, {useContext, useState} from 'react';
 import {Link} from "react-router-dom";
 
-import MensajeError from "../../Utilidades/MensajeError/MensajeError";
+import MensajeInfo from "../../Utilidades/MensajeInfo/MensajeInfo";
 
 import { EstadoGlobal } from "../../../EstadoGlobal";
 import "./IniciarSesion.css";
@@ -46,7 +46,7 @@ const IniciarSesion = () => {
 		<main className="seccion">
 			<h1 data-transicion style={{animationDelay: "0.2s"}}>Iniciar Sesión</h1>
 			
-			<MensajeError mensaje={mensajeError} /> 
+			<MensajeInfo tipo={"error"} mensaje={mensajeError} /> 
 			
 			{!estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si no hay sesion 		
 			<form onSubmit={intentarInicioSesion} className="formulario-inicio-sesion" data-transicion style={{animationDelay: "0.4s"}}>

@@ -5,7 +5,7 @@ import axios from 'axios';
 import { EstadoGlobal } from "../../../EstadoGlobal";
 import ProductoRelacionado from "../Tienda/Producto";
 
-import MensajeError from "../../Utilidades/MensajeError/MensajeError";
+import MensajeInfo from "../../Utilidades/MensajeInfo/MensajeInfo";
 import "./Producto.css"
 
 const Producto = () => {
@@ -62,7 +62,7 @@ const Producto = () => {
 	
 	if (productoSeleccionado) return (
 		<>
-		<MensajeError mensaje={mensajeError} /> 
+		<MensajeInfo tipo={"error"} mensaje={mensajeError} /> 
 		<main className="producto-seleccionado seccion">
 			<div className="imagen-producto" data-transicion style={{animationDelay: "0.2s"}}>
 				<img src={`http://localhost:5000/imagenes/productos/${productoSeleccionado.imagenProducto}`} alt={productoSeleccionado.nombre} />

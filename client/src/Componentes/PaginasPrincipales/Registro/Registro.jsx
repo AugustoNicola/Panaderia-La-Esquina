@@ -1,6 +1,6 @@
 import React, {useContext, useState} from 'react';
 
-import MensajeError from "../../Utilidades/MensajeError/MensajeError"
+import MensajeInfo from "../../Utilidades/MensajeInfo/MensajeInfo"
 
 import { EstadoGlobal } from "../../../EstadoGlobal";
 import "./Registro.css";
@@ -55,7 +55,7 @@ const Registro = () => {
 		<main className="seccion">
 			<h1 data-transicion style={{animationDelay: "0.2s"}}>Crear Cuenta</h1>
 			
-			<MensajeError mensaje={mensajeError} /> 
+			<MensajeInfo tipo={"error"} mensaje={mensajeError} /> 
 							
 			{!estado.usuarioAPI.sesionIniciada[0] && //solo se muestra si no hay sesion 
 			<form onSubmit={intentarRegistrarUsuario} className="formulario-registro" data-transicion style={{animationDelay: "0.4s"}}>
