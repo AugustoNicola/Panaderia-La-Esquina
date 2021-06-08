@@ -175,8 +175,9 @@
 .contenido-donde-encontrarnos .mapa {
 	display: block;
 	width: 85%;
-	height: 40rem;
-	background-color: var(--color-primario);
+	height: 45rem;
+	background-image: url("../../../img/Index/Mapa.jpg");
+	background-size: 100% 100%;
 
 	margin: 0 auto;
 }

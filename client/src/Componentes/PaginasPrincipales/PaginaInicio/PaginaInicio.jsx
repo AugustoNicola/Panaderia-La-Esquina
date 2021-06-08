@@ -58,9 +58,7 @@ const PaginaInicio = () => {
 					<i className="far fa-clock"></i>
 					<p>Lunes a Viernes 08:00 — 19:30</p>
 				</div>
-				<div className="mapa" data-transicion style={{animationDelay: "0.7s"}}>
-					{ /* todo plugin mapa*/}
-				</div>
+				<div className="mapa" id="map" data-transicion style={{animationDelay: "0.7s"}} />
 			</div>
 		</div>
 		</>
