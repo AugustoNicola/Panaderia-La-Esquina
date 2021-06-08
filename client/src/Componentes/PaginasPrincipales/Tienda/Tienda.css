@@ -37,13 +37,12 @@
 	font-size: 2.6rem;
 	font-weight: bold;
 
-	padding: 1rem;
 	position: relative;
 
 	display: flex;
 	justify-content: left;
 	align-items: center;
-	
+	z-index: -1;
 }
 .filtros .selector-filtros:hover, 
 .filtros .selector-filtros:active,
@@ -52,7 +51,9 @@
 }
 
 .filtros .selector-filtros select {
-	flex: 0 0 85%;
+	z-index: 1;
+	padding: 1rem;
+	width: 100%;
 	background-color: inherit;
 	color: inherit;
 	font-size: inherit;
@@ -74,6 +75,7 @@
 	font-size: 3rem;
     top: 25%;
     right: 10px;
+	z-index: 1;
 }
 
 @media screen and (min-width: 1020px) {
