@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import "./normalize.css";
 import "./App.css";
 import PaginaInicio from "./Componentes/PaginasPrincipales/PaginaInicio/PaginaInicio";
-import Header from "./Componentes/Headers/Header";
+import Header from "./Componentes/Utilidades/Header/Header";
 import Footer from "./Componentes/Utilidades/Footer/Footer";
 import EnrutadorPaginaPrincipal from "./Componentes/PaginasPrincipales/EnrutadorPaginaPrincipal";
 import { ProveedorEstado } from "./EstadoGlobal";
