@@ -29,10 +29,13 @@ const Producto = () => {
 				if(producto._id === idProducto) setProductoSeleccionado(producto);
 			});
 			
-			//* busca productos relacionados
-			const categoriaABuscar = productoSeleccionado.categorias ? productoSeleccionado.categorias[0] : "";
-			const respuesta = await axios.get(`http://localhost:5000/api/productos?categoria=${categoriaABuscar}&busqueda=&orden=-updatedAt&pagina=1&limite=6`);
-			if(respuesta.status === 200) setProductosRelacionados(respuesta.data.productos);
+			if(productoSeleccionado)
+			{
+				//* busca productos relacionados
+				const categoriaABuscar = productoSeleccionado.categorias ? productoSeleccionado.categorias[0] : "";
+				const respuesta = await axios.get(`http://localhost:5000/api/productos?categoria=${categoriaABuscar}&busqueda=&orden=-updatedAt&pagina=1&limite=6`);
+				if(respuesta.status === 200) setProductosRelacionados(respuesta.data.productos);
+			}
 		};
 		
 		obtenerInformacionProductos();
