@@ -5,7 +5,7 @@ import "./Footer.css";
 
 const Footer = () => {
 	return (
-		<div className="contenedor-footer">
+		<div className="contenedor-footer no-select">
 			<div className="footer">
 				<Link to="/" className="logo-footer">La Esquina</Link>
 				<nav className="navegacion-footer">

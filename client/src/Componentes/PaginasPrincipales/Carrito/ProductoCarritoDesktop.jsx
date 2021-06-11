@@ -9,7 +9,7 @@ const ProductoCarritoDesktop = ({producto, intentarModificarCantidad, intentarEl
 	
 	return (
 		<tr className="fila-producto">
-			<td className="celda-imagen">
+			<td className="celda-imagen no-select">
 				<div className="imagen">
 					<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
 				</div>

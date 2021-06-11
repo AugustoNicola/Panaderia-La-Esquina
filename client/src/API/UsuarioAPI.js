@@ -85,8 +85,8 @@ const UsuarioAPI = () => {
 				}
 			} catch (error) {
 				//! Error: elimina la sesion actual
-				console.log(error.respoonse.status);
-				alert("Sesion cerrada al querer obtener token: Error + " + error.respoonse.status);
+				console.log(error.response.status);
+				alert("Sesion cerrada al querer obtener token: Error + " + error.response.status);
 				eliminarDatosDeSesion();
 			}
 		};
@@ -110,8 +110,8 @@ const UsuarioAPI = () => {
 				} 
 			} catch (error) {
 				//! Error: elimina la sesion actual
-				console.log(error.respoonse.status);
-				alert("Sesion cerrada al querer obtener datos de usuario: Error + " + error.respoonse.status);
+				console.log(error.response.status);
+				alert("Sesion cerrada al querer obtener datos de usuario: Error + " + error.response.status);
 				eliminarDatosDeSesion();
 			}
 		};
@@ -170,7 +170,7 @@ const UsuarioAPI = () => {
 		try {
 			let nuevoCarrito = carrito;
 			nuevoCarrito.forEach(producto => {
-				if(producto._id == id) producto.cantidad = cantidad;
+				if(producto._id === id) producto.cantidad = cantidad;
 			});
 			
 			const status = await actualizarCarrito(nuevoCarrito);
@@ -190,7 +190,7 @@ const UsuarioAPI = () => {
 		try {
 			let nuevoCarrito = carrito;
 			nuevoCarrito.forEach((producto, indice) => {
-				if(producto._id == id) nuevoCarrito.splice(indice, 1);
+				if(producto._id === id) nuevoCarrito.splice(indice, 1);
 			});
 			
 			const status = await actualizarCarrito(nuevoCarrito);

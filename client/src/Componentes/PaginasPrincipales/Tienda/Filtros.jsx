@@ -26,22 +26,22 @@ const Filtros = () => {
 		<div className="filtros" data-transicion style={{animationDelay: "0.3s"}}>
 			<input type="text" name="busqueda" id="busqueda" placeholder="¡Escribí lo que querés!" value={busqueda} onChange={cambioBusqueda}/>
 			<div className="selector-filtros">
-				<select name="categoria" id="categoria" onChange={cambioCategoria}>
+				<select name="categoria" id="categoria" value={categoria ? categoria : ""} onChange={cambioCategoria}>
 					<option value="">Todo</option>
 					{
 						categorias.map(categoriaActual => {
 							return (
-								<option key={categoriaActual._id} value={categoriaActual.nombre} selected={categoria === categoriaActual.nombre}>{categoriaActual.nombre}</option>
+								<option key={categoriaActual._id} value={categoriaActual.nombre}>{categoriaActual.nombre}</option>
 							)
 						})
 					}
 				</select>
 			</div>
 			<div className="selector-filtros">
-				<select name="orden" id="orden" onChange={cambioOrden}>
+				<select name="orden" id="orden" value={orden ? orden : "-updatedAt"} onChange={cambioOrden}>
 					<option value="precio">Precio más bajo</option>
 					<option value="-precio">Precio más alto</option>
-					<option value="-updatedAt" selected>Más reciente</option>
+					<option value="-updatedAt">Más reciente</option>
 					<option value="updatedAt">Menos reciente</option>
 				</select>
 			</div>

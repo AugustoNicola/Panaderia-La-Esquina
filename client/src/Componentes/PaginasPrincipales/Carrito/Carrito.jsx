@@ -9,7 +9,7 @@ import ProductoCarritoDesktop from "./ProductoCarritoDesktop";
 
 const Carrito = () => {
 	const estado = useContext(EstadoGlobal);
-	const [carrito, setCarrito] = estado.usuarioAPI.carrito;
+	const carrito = estado.usuarioAPI.carrito[0];
 	const [mensajeError, setMensajeError] = useState("");
 	
 	const intentarModificarCantidad = async (e, id) => {
@@ -80,37 +80,41 @@ const Carrito = () => {
 						<col span="1" style={{width: "15%"}}></col>
 						<col span="1" style={{width: "10%"}}></col>
 					</colgroup>
-					
-					<tr className="encabezados">
-						<th colSpan="2">Producto</th>
-						<th>Pr. unitario</th>
-						<th>Cantidad</th>
-						<th className="subtotal">Subtotal</th>
-					</tr>
-					
-					{
-					carrito.map(producto => {
-						return (
-							<ProductoCarritoDesktop 
-								key={producto._id}
-								producto={producto}
-								intentarModificarCantidad={intentarModificarCantidad}
-								intentarEliminarProducto={intentarEliminarProducto}>
-							</ProductoCarritoDesktop>
-						)
-					})
-					}
-					<tr className="total-final">
-						<td colSpan="4">Total Final</td>
-						<td className="precio">
-							${carrito.reduce((previo, producto) => {return previo + (producto.precio * producto.cantidad)},0)}
-						</td>
-					</tr>
+					<thead>	
+						<tr className="encabezados">
+							<th colSpan="2">Producto</th>
+							<th>Pr. unitario</th>
+							<th>Cantidad</th>
+							<th className="subtotal">Subtotal</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+						carrito.map(producto => {
+							return (
+								<ProductoCarritoDesktop 
+									key={producto._id}
+									producto={producto}
+									intentarModificarCantidad={intentarModificarCantidad}
+									intentarEliminarProducto={intentarEliminarProducto}>
+								</ProductoCarritoDesktop>
+							)
+						})
+						}
+						<tr className="total-final">
+							<td colSpan="4">Total Final</td>
+							<td className="precio">
+								${carrito.reduce((previo, producto) => {return previo + (producto.precio * producto.cantidad)},0)}
+							</td>
+						</tr>
+					</tbody>
 				</table>
 				}
 				</div>
 				
-				<Link to="/checkout"><button type="submit" className="boton continuar" data-transicion style={{animationDelay: "0.6s"}}>Continuar compra</button></Link>
+				<div className="contenedor-continuar">
+					<Link to="/checkout"><button type="submit" className="boton continuar" data-transicion style={{animationDelay: "0.6s"}}>Continuar compra</button></Link>
+				</div>
 			</div>
 			}
 			

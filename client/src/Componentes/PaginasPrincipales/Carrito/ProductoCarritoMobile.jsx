@@ -10,7 +10,7 @@ const ProductoCarritoMobile = ({producto, intentarModificarCantidad, intentarEli
 	return (
 		<div className="producto-carrito">
 			<div className="principal">	
-				<div className="imagen">
+				<div className="imagen no-select">
 					<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
 				</div>
 

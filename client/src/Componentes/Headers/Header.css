@@ -6,7 +6,6 @@
 
 	padding-top: 2rem;
 	width: 100%;
-	max-height: 7.5rem;
 }
 
 .logo-header {
@@ -33,6 +32,8 @@
 	align-items: center;
 
 	color: var(--color-blanco);
+	background-color: var(--color-primario);
+	border: none;
 	text-decoration: none;
 
 	margin-bottom: 2rem;
@@ -60,6 +61,7 @@
 		justify-content: space-between;
 
 		padding: 1.6rem 2rem;
+		max-height: 7.5rem;
 	}
 	.botones-header {
 		gap: 4rem;

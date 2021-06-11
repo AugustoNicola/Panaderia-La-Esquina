@@ -7,7 +7,7 @@ import "./PaginaInicio.css";
 const PaginaInicio = () => {
 	const estado = useContext(EstadoGlobal);
 	const [categorias] = estado.categoriasAPI.categorias;
-	const [categoria, setCategoria] = estado.productosAPI.categoria;
+	const setCategoria = estado.productosAPI.categoria[1];
 	const [redireccion, setRedireccion] = useState(false);
 
 	const navegacionTienda = (nombreCategoria) => {
@@ -39,7 +39,7 @@ const PaginaInicio = () => {
 							<div className="categoria" key={categoria._id} onClick={() => navegacionTienda(categoria.nombre)}>
 								<span>{categoria.esFemenino ? "Nuestras" : "Nuestros"}</span>
 								<h4>{categoria.nombre}</h4>
-								<img src= {"http://localhost:5000/imagenes/categorias/" + categoria.imagenPortada} alt=""/>
+								<img src= {"http://localhost:5000/imagenes/categorias/" + categoria.imagenPortada} alt="" className="no-select" />
 							</div>
 						);
 					})

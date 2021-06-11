@@ -174,9 +174,14 @@
 }
 
 @media screen and (min-width: 1025px) {
+	.contenedor-continuar {
+		display: flex;
+		justify-content: right;
+	}
 	.boton.continuar {
 		font-size: 3.2rem;
 		padding: 2.2rem 3rem;
 		margin: 3rem 3rem 3rem auto;
+		display: inline-block;
 	}
 }

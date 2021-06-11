@@ -54,7 +54,7 @@
 	z-index: 1;
 	padding: 1rem;
 	width: 100%;
-	background-color: inherit;
+	background-color: rgba(202, 202, 202, 0);
 	color: inherit;
 	font-size: inherit;
 	font-weight: inherit;
@@ -75,7 +75,7 @@
 	font-size: 3rem;
     top: 25%;
     right: 10px;
-	z-index: 1;
+	z-index: -1;
 }
 
 @media screen and (min-width: 1020px) {

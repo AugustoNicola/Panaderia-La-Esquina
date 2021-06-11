@@ -14,10 +14,10 @@ const Header = () => {
 					<i className="fas fa-shopping-cart"></i>
 					<p>Carrito</p>
 				</Link>
-				<a href="#" className="accion" onClick={estado.usuarioAPI.cerrarSesion}>
+				<button className="accion" onClick={estado.usuarioAPI.cerrarSesion}>
 					<i className="fas fa-sign-in-alt"></i>
 					<p>Salir</p>
-				</a>
+				</button>
 			</div>
 		)
 	};
@@ -34,7 +34,7 @@ const Header = () => {
 	}
 	
 	return (
-		<div className="header">
+		<div className="header no-select">
 			<Link to="/tienda" className="logo-header">La Esquina</Link>
 
 			{estado.usuarioAPI.sesionIniciada[0] ? accionesConSesion() : accionesSinSesion()}

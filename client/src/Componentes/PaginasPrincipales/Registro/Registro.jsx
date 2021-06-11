@@ -25,7 +25,7 @@ const Registro = () => {
 	
 	const intentarRegistrarUsuario = async e => {
 		e.preventDefault();
-		if(credenciales.contrasena != credenciales.repetirContrasena)
+		if(credenciales.contrasena !== credenciales.repetirContrasena)
 		{
 			//? verificacion contrasena fallida
 			setMensajeError("Las contraseñas deben ser iguales.")

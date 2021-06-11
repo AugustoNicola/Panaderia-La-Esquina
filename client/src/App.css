@@ -51,6 +51,9 @@ div.app {
 	flex-flow: row wrap;
 }
 
+*::selection {
+	background-color: #afafaf9b;
+}
 /** ################## UTILIDADES ################## */
 .seccion {
 	max-width: 1200px;
@@ -76,6 +79,19 @@ div.app {
 @keyframes transicion {
 	from {opacity: 0;}
 	to {opacity: 1;}
+}
+
+.select {
+	-webkit-user-select: unset;
+	-moz-user-select: unset;
+	-ms-user-select: unset;
+	user-select: unset;
+}
+.no-select {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 
 .boton {
