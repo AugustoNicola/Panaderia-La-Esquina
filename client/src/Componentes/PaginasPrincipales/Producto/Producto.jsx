@@ -21,7 +21,6 @@ const Producto = () => {
 		setCantidadCarrito((e.target.value >= 1 && e.target.value <= 99 ? e.target.value : cantidadCarrito));
 	}
 	
-	// TODO arreglar error relacionados
 	useEffect(() => {
 		const obtenerInformacionProductos = async () => {
 			//* encuentra el producto seleccionado
