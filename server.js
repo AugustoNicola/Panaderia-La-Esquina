@@ -27,16 +27,19 @@ mongoose.connect(URI, {
 app.use("/api/categorias", require("./rutas/rutaCategoria"));
 app.use("/api/productos", require("./rutas/rutaProducto"));
 app.use("/api/usuario", require("./rutas/rutaUsuario"));
-
-// ==================== inicializacion de servidor ====================
-app.get("/test", (req, res) => {
-	res.sendFile(`${__dirname}/index.html`);
-});
-
 app.get("/imagenes/:seccion/:img", (req, res) => {
 	res.sendFile(`${__dirname}/imagenes/${req.params.seccion}/${req.params.img}`);
 });
 
+if(process.env.NODE_ENV === "production")
+{
+	app.use(express.static("client/build"));
+	app.get("*", (req, res) => {
+		res.sendFile(path.join(__dirname, "client", "build", "index.htmlff"))
+	});
+}
+
+// ==================== inicializacion de servidor ====================
 const PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
 	console.log("Servidor iniciado en el puerto ", PORT);
