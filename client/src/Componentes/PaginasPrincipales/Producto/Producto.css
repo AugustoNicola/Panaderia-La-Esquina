@@ -145,10 +145,6 @@
 		padding: 0 7rem;
 		flex: 1200px 0 1;
 	}
-	
-	.productos-relacionados .listado {
-		scrollbar-width: initial;
-	}
 
 	.productos-relacionados .listado .producto {
 		min-width: 300px;

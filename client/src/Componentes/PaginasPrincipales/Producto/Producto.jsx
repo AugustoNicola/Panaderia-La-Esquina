@@ -32,7 +32,7 @@ const Producto = () => {
 			{
 				//* busca productos relacionados
 				const categoriaABuscar = productoSeleccionado.categorias ? productoSeleccionado.categorias[0] : "";
-				const respuesta = await axios.get(`http://localhost:5000/api/productos?categoria=${categoriaABuscar}&busqueda=&orden=-updatedAt&pagina=1&limite=6`);
+				const respuesta = await axios.get(`http://localhost:5000/api/productos?categoria=${categoriaABuscar}&busqueda=&orden=-updatedAt&pagina=1&limite=4`);
 				if(respuesta.status === 200) setProductosRelacionados(respuesta.data.productos);
 			}
 		};
