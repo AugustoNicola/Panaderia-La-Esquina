@@ -9,7 +9,7 @@ const ProductosAPI = () => {
 	const [busqueda, setBusqueda] = useState("");
 	const [orden, setOrden] = useState("-updatedAt");
 	const [pagina, setPagina] = useState(1);
-	const [limite, setLimite] = useState(9);
+	const [limite, setLimite] = useState(50);
 
 	const [callback, setCallback] = useState(false); // al ser alterado vuelve a obtener los productos
 

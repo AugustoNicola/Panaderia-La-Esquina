@@ -26,11 +26,11 @@
     "client-install-dependencies": "cd client && npm install",
     "install-all-dependencies": "concurrently \"npm run server-install-dependencies\" \"npm run client-install-dependencies\""
   },
-
   "nodemonConfig": {
-    "ignore": ["./client"]
+    "ignore": [
+      "./client"
+    ]
   },
-  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AugustoNicola/Proyecto-LaEsquina.git"
