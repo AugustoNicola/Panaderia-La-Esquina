@@ -19,7 +19,6 @@
 		}
 	],
 	"categories": ["business", "food", "pastry"],
-	"start_url": ".",
 	"display": "browser",
 	"theme_color": "#C0682F",
 	"background_color": "#FFF7F0",
