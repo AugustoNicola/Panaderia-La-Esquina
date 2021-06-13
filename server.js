@@ -28,7 +28,7 @@ app.use("/api/categorias", require("./rutas/rutaCategoria"));
 app.use("/api/productos", require("./rutas/rutaProducto"));
 app.use("/api/usuario", require("./rutas/rutaUsuario"));
 app.get("/imagenes/:seccion/:img", (req, res) => {
-	res.sendFile(`${__dirname}/imagenes/${req.params.seccion}/${req.params.img}`);
+	res.status(200).send(`${__dirname}/imagenes/${req.params.seccion}/${req.params.img}`);
 });
 
 if(process.env.NODE_ENV === "production")
