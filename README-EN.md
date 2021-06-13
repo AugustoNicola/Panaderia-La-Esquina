@@ -1,7 +1,7 @@
 # **"La Esquina" Bakery**
 ### *Project of an e-commerce site for a *(fictional)* local bakery, made with the MERN stack*
 
-![Screenshot](https://raw.githubusercontent.com/AugustoNicola/Panaderia-La-Esquina/produccion/screenshot.png)
+![Screenshot](https://raw.githubusercontent.com/AugustoNicola/Panaderia-La-Esquina/produccion/screenshot.png?token=ALORPBQ4EQKY6EQRMPNZ343AYWMV4)
 
 <br>
 
