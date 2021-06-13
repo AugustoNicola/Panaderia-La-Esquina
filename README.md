@@ -1,6 +1,8 @@
 # **Panadería "La Esquina"**
 ### *Proyecto de tienda virtual de una panadería de barrio hecha con el stack MERN*
 
+### **Versión en línea: https://panaderia-la-esquina.herokuapp.com/**
+
 ![Screenshot](https://raw.githubusercontent.com/AugustoNicola/Panaderia-La-Esquina/produccion/screenshot.png?token=ALORPBQ4EQKY6EQRMPNZ343AYWMV4)
 
 <br>
