@@ -32,7 +32,7 @@ const Producto = () => {
 			{
 				//* busca productos relacionados
 				const categoriaABuscar = productoSeleccionado.categorias ? productoSeleccionado.categorias[0] : "";
-				const respuesta = await axios.get(`http://localhost:5000/api/productos?categoria=${categoriaABuscar}&busqueda=&orden=-updatedAt&pagina=1&limite=4`);
+				const respuesta = await axios.get(`/api/productos?categoria=${categoriaABuscar}&busqueda=&orden=-updatedAt&pagina=1&limite=4`);
 				if(respuesta.status === 200) setProductosRelacionados(respuesta.data.productos);
 			}
 		};
@@ -72,7 +72,7 @@ const Producto = () => {
 		<MensajeInfo tipo={"error"} mensaje={mensajeError} /> 
 		<main className="producto-seleccionado seccion">
 			<div className="imagen-producto" data-transicion style={{animationDelay: "0.2s"}}>
-				<img src={`http://localhost:5000/imagenes/productos/${productoSeleccionado.imagenProducto}`} alt={productoSeleccionado.nombre} className="no-select" />
+				<img src={`/imagenes/productos/${productoSeleccionado.imagenProducto}`} alt={productoSeleccionado.nombre} className="no-select" />
 			</div>
 
 			<div className="informacion-producto" data-transicion style={{animationDelay: "0.4s"}}>

@@ -11,7 +11,7 @@ const ProductoCarritoMobile = ({producto, intentarModificarCantidad, intentarEli
 		<div className="producto-carrito">
 			<div className="principal">	
 				<div className="imagen no-select">
-					<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
+					<img src={`/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
 				</div>
 
 				<div className="informacion">

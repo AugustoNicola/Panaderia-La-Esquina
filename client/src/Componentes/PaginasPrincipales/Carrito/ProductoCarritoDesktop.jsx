@@ -11,7 +11,7 @@ const ProductoCarritoDesktop = ({producto, intentarModificarCantidad, intentarEl
 		<tr className="fila-producto">
 			<td className="celda-imagen no-select">
 				<div className="imagen">
-					<img src={`http://localhost:5000/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
+					<img src={`/imagenes/productos/${producto.imagenProducto}`} alt={producto.nombre} />
 				</div>
 			</td>
 			<td className="celda-nombre">

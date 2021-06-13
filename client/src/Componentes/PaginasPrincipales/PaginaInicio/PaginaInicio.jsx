@@ -39,7 +39,7 @@ const PaginaInicio = () => {
 							<div className="categoria" key={categoria._id} onClick={() => navegacionTienda(categoria.nombre)}>
 								<span>{categoria.esFemenino ? "Nuestras" : "Nuestros"}</span>
 								<h4>{categoria.nombre}</h4>
-								<img src= {"http://localhost:5000/imagenes/categorias/" + categoria.imagenPortada} alt="" className="no-select" />
+								<img src= {"/imagenes/categorias/" + categoria.imagenPortada} alt="" className="no-select" />
 							</div>
 						);
 					})
