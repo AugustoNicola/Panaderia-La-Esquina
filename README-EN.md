@@ -11,7 +11,7 @@
 
 <br>
 
-The online store is a Progressive Web App (PWA) which consists of two parts: the **frontend**, made with React; and the **backend**, which uses Node.js + Express.js and connects to MongoDB database.
+The online store is a Single Page Application (PWA) which consists of two parts: the **frontend**, made with React; and the **backend**, which uses Node.js + Express.js and connects to MongoDB database.
 
 Some funcionalities in the project are: product listing with search queries and filers, account managing, buying carts and payment integration using paypal.
 
@@ -22,12 +22,12 @@ In order to configure the development enviroment, please follow these steps:
 
 1. **Clone the repository and move to the target directory**
 	
-		$ git clone https://github.com/AugustoNicola/Proyecto-LaEsquina
+		$ git clone https://github.com/AugustoNicola/Panaderia-La-Esquina
 		$ cd Panaderia-La-Esquina/
-	
+
 2. **Install the necessary dependencies**
 		
-		npm run install-all-dependencies
+		$ npm run install-all-dependencies
 
 3. **Connect to the required services**  
 	Create a `.env` file in the root directory of the project. This file holds the sensitive information needed for all services. Inside the file add the following fields:

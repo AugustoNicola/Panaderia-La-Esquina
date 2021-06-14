@@ -11,7 +11,7 @@
 
 <br>
 
-La tienda virtual es una aplicación web progresiva (PWA) de dos partes: el **frontend**, usando React; y el **backend**, que usa Node.js + Express.js y se conecta a una base de datos de MongoDB.
+La tienda virtual es una aplicación de página única (SPA) de dos partes: el **frontend**, usando React; y el **backend**, que usa Node.js + Express.js y se conecta a una base de datos de MongoDB.
 
 Algunas de las funcionalidades incluyen: catálogo de productos con filtros de búsqueda, administración de cuentas,  carritos de compra e integración con PayPal para pagos.
 
@@ -22,12 +22,12 @@ Para poder configurar el entorno de desarrollo de la aplicación localmente, seg
 
 1. **Clonar el repositorio y moverse a la carpeta de destino**
 	
-		$ git clone https://github.com/AugustoNicola/Proyecto-LaEsquina
+		$ git clone https://github.com/AugustoNicola/Panaderia-La-Esquina
 		$ cd Panaderia-La-Esquina/
 	
 2. **Instalar las dependencias necesarias**
 		
-		npm run install-all-dependencies
+		$ npm run install-all-dependencies
 
 3. **Conectar con los servicios necesarios**  
 	Crear un archivo `.env` en el directorio base del proyecto. Este archivo se encarga de suministrar la información sensible necesaria. Dentro del archivo, agregar los campos:
