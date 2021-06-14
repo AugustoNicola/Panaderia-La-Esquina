@@ -20,7 +20,7 @@
 
 .formulario-registro .boton {
 	width: 100%;
-	font-size: 4.2rem;
+	font-size: 3.2rem;
 	margin-bottom: 5rem;
 }
 
@@ -38,5 +38,6 @@
 	.formulario-registro .boton {
 		max-width: 34rem;
 		margin: 0 auto 3rem 0;
+		font-size: 4.2rem;
 	}
 }

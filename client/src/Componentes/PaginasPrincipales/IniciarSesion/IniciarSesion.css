@@ -20,7 +20,7 @@
 
 .formulario-inicio-sesion .boton {
 	width: 80%;
-	font-size: 4.2rem;
+	font-size: 3.2rem;
 	margin-bottom: 3rem;
 }
 
@@ -33,5 +33,6 @@
 	}
 	.formulario-inicio-sesion .boton {
 		flex-grow: 1;
+		font-size: 4.2rem;
 	}
 }

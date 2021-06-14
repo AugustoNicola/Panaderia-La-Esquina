@@ -3,6 +3,7 @@ import { Redirect } from "react-router";
 import { EstadoGlobal } from "../../../EstadoGlobal";
 
 import "./PaginaInicio.css";
+import Mapa from "../../../img/Index/Mapa.jpg";
 
 const PaginaInicio = () => {
 	const estado = useContext(EstadoGlobal);
@@ -56,9 +57,9 @@ const PaginaInicio = () => {
 				</div>
 				<div className="informacion" data-transicion style={{animationDelay: "0.5s"}}>
 					<i className="far fa-clock"></i>
-					<p>Lunes a Viernes 08:00 — 19:30</p>
+					<p>Lunes a Viernes <span>08:00 — 19:30</span></p>
 				</div>
-				<div className="mapa" id="map" data-transicion style={{animationDelay: "0.7s"}} />
+				<img src={Mapa} alt="Mapa de nuestro local" className="mapa" />
 			</div>
 		</div>
 		</>

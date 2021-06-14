@@ -171,15 +171,23 @@
 
 	flex-grow: 1;
 }
+.contenido-donde-encontrarnos .informacion p span {
+	white-space: nowrap;
+}
 
 .contenido-donde-encontrarnos .mapa {
 	display: block;
-	width: 85%;
-	height: 45rem;
+	width: 100%;
+	height: auto;
 	background-image: url("../../../img/Index/Mapa.jpg");
 	background-size: 100% 100%;
 
 	margin: 0 auto;
+}
+@media screen and (min-width: 600px) {
+	.contenido-donde-encontrarnos .mapa {
+		width: 85%;
+	}
 }
 
 @media screen and (min-width: 1024px) {

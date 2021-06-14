@@ -63,8 +63,11 @@ div.app {
 .seccion h1 {
 	color: var(--color-primario);
 	text-align: center;
-	font-size: 4.2rem;
+	font-size: 3.6rem;
 	margin: 2.4rem 0;
+}
+@media screen and (min-width: 768px) {
+	.seccion h1 {font-size: 4.2rem;}
 }
 .seccion.tamano-completo {
 	max-width: none;
@@ -123,6 +126,7 @@ div.app {
 	text-align: center;
 	align-self: center;
 	height: 100%;
+	margin: 0 3rem;
 }
 .operacion-invalida h2 {
 	font-size: 7rem;
@@ -168,7 +172,7 @@ div.app {
 .campo {
 	background-color: rgba(0, 0, 0, 0);
 	color: var(--color-form-gris-oscuro);
-	font-size: 3.2rem;
+	font-size: 2.8rem;
 	font-weight: bold;
 	border: none;
 	border-bottom: solid 3px var(--color-form-gris-claro);
@@ -189,4 +193,10 @@ div.app {
 }
 .campo:focus::placeholder {
 	color: var(--color-form-gris-oscuro);
+}
+
+@media screen and (min-width: 768px) {
+	.campo {
+		font-size: 3.2rem;
+	}
 }

@@ -99,7 +99,13 @@
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
-	padding: 0 1rem;
+	padding: 0 3rem;
+}
+@media screen and (min-width: 768px) {
+	.listado-productos {padding: 0 1rem;}
+}
+@media screen and (min-width: 1200px) {
+	.listado-productos {padding: 0;}
 }
 
 .producto {

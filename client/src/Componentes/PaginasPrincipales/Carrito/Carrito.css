@@ -20,12 +20,19 @@
 
 .producto-carrito .principal .imagen {
 	width: 45%;
-	height: 20rem;
+	height: 100%;
+	max-height: 100%;
 	margin: 0;
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
 }
 .producto-carrito .principal .imagen img {
 	width: 100%;
-	height: 100%;
+	height: auto;
+	max-width: 16rem;
+	max-height: 16rem;
 	border-radius: 5%;
 }
 
@@ -37,13 +44,13 @@
 .producto-carrito .principal .informacion h3 {
 	color: var(--color-primario);
 	text-align: center;
-	font-size: 3.6rem;
+	font-size: 2.7rem;
 	margin: 0;
 	word-wrap: break-word;
 }
 .producto-carrito .principal .informacion p {
 	text-align: center;
-	font-size: 2.6rem;
+	font-size: 2rem;
 }
 
 .producto-carrito .principal .informacion .acciones {
@@ -63,7 +70,7 @@
 	background-color: var(--color-suave-realce);
 	width: 100%;
 	text-align: center;
-	font-size: 2.6rem;
+	font-size: 2rem;
 	font-weight: bold;
 }
 
@@ -78,13 +85,27 @@
 }
 
 .carrito .continuar {
-	font-size: 4.2rem;
+	font-size: 2.7rem;
 	padding: 3rem;
 	display: block;
 	margin: 3rem auto;
 }
 .carrito a {
 	text-decoration: none;
+}
+
+@media screen and (min-width: 768px) {
+	.producto-carrito .principal .imagen img {
+		max-width: 20rem;
+		max-height: 20rem;
+	}
+	
+	.producto-carrito .principal .informacion h3 {font-size: 3.6rem;}
+	
+	.producto-carrito .principal .informacion p {font-size: 2.6rem;}
+	
+	.producto-carrito .subtotal {font-size: 2.6rem;}
+	
 }
 
 /** ################## CARRITO DESKTOP ################## */
