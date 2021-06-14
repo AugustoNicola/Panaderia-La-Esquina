@@ -85,8 +85,8 @@ const UsuarioAPI = () => {
 				}
 			} catch (error) {
 				//! Error: elimina la sesion actual
-				console.log(error.response.status);
-				alert("Sesion cerrada al querer obtener token: Error + " + error.response.status);
+				//console.log(error.response.status);
+				//alert("Sesion cerrada al querer obtener token: Error + " + error.response.status);
 				eliminarDatosDeSesion();
 			}
 		};
@@ -110,8 +110,8 @@ const UsuarioAPI = () => {
 				} 
 			} catch (error) {
 				//! Error: elimina la sesion actual
-				console.log(error.response.status);
-				alert("Sesion cerrada al querer obtener datos de usuario: Error + " + error.response.status);
+				//console.log(error.response.status);
+				//alert("Sesion cerrada al querer obtener datos de usuario: Error + " + error.response.status);
 				eliminarDatosDeSesion();
 			}
 		};
@@ -162,7 +162,7 @@ const UsuarioAPI = () => {
 			return status; // devuelve el status code para mostrarle al usuario la informacion relevante
 		} catch (error) {
 			//! Error
-			console.log(error);
+			//console.log(error);
 		}
 	};
 	
@@ -182,7 +182,7 @@ const UsuarioAPI = () => {
 			return status; // devuelve el status code para mostrarle al usuario la informacion relevante
 		} catch (error) {
 			//! Error
-			console.log(error);
+			//console.log(error);
 		}
 	};
 	
@@ -202,7 +202,7 @@ const UsuarioAPI = () => {
 			return status; // devuelve el status code para mostrarle al usuario la informacion relevante
 		} catch (error) {
 			//! Error
-			console.log(error);
+			//console.log(error);
 		}	
 	};
 	
@@ -216,7 +216,7 @@ const UsuarioAPI = () => {
 			}
 		} catch (error) {
 			//! Error
-			console.log(error);
+			//console.log(error);
 		}
 	}
 	
