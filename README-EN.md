@@ -11,7 +11,7 @@
 
 <br>
 
-The online store is a Single Page Application (PWA) which consists of two parts: the **frontend**, made with React; and the **backend**, which uses Node.js + Express.js and connects to MongoDB database.
+The online store is a Single Page Application (SPA) which consists of two parts: the **frontend**, made with React; and the **backend**, which uses Node.js + Express.js and connects to MongoDB database.
 
 Some funcionalities in the project are: product listing with search queries and filers, account managing, buying carts and payment integration using paypal.
 
