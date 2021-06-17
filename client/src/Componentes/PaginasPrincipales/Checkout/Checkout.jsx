@@ -49,7 +49,7 @@ const Checkout = () => {
 	//* integracion pagos
 	const [habilitarPaypal, setHabilitarPaypal] = useState(false);
 	const opcionesPaypal = {
-		"client-id": "AXHJZrXdVMOSroBaaqIZzgKXtL914XZm8s7zvtPWBWW5l-3ICKzotmKtpqm1_NOtLd36puXeIKBulvrJ",
+		"client-id": process.env.PAYPAL_ID,
 		"buyer-country": "AR",
 		locale: "es_AR",
 		currency: "MXN",
