@@ -1,13 +1,13 @@
-# **"La Esquina" Bakery**
+![La Esquina Bakery](Logo-EN.png)
 ### *Project of an e-commerce site for a *(fictional)* local bakery, made with the MERN stack*
 
 ### **Live demo: https://panaderia-la-esquina.herokuapp.com/**
 
-![Screenshot](https://raw.githubusercontent.com/AugustoNicola/Panaderia-La-Esquina/produccion/screenshot.png?token=ALORPBQ4EQKY6EQRMPNZ343AYWMV4)
+![Screenshot](screenshot.png)
 
 <br>
 
-### [README en español acá :argentina: :mexico:](https://github.com/AugustoNicola/Panaderia-La-Esquina/blob/produccion/README.md)
+### [README en español acá :argentina: :mexico:](README.md)
 
 <br>
 
